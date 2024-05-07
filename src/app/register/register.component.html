@@ -1,0 +1,118 @@
+<div class="login-wrapper">
+    <div class="login-side">
+        <a href="#" title="Logo">
+            <img class="logo" src="assets/logo.png" alt="Logo">
+        </a>
+        <div class="my-form__wrapper">
+            <div class="login-welcome-row">
+                <h1>Welcome 👏</h1>
+                <p>Please enter your details!</p>
+            </div>
+            <form class="my-form"  [formGroup]="registrationForm" (ngSubmit)="handleRegister()">
+                <div class="socials-row">
+                    <a
+                        href="#"
+                        title="Use Google"
+                    >
+                        <img src="assets/google.png" alt="Google">
+                        Sign up with Google
+                    </a>
+                    <a
+                        href="#"
+                        title="Use Apple"
+                    >
+                        <img src="assets/apple.png" alt="Apple">
+                        Sign up with Apple
+                    </a>
+                </div>
+                <div class="text-field">
+                    <label for="firstName">First Name:</label>
+                    <input
+                        id="firstName"
+                        type="text"
+                        name="firstName"
+                        placeholder="Your First Name"
+                        formControlName="firstName"
+                        required
+                    >
+                </div>
+                <div class="text-field">
+                    <label for="lastName">Last Name:</label>
+                    <input
+                        id="lastName"
+                        type="text"
+                        name="lastName"
+                        placeholder="Your Last Name"
+                        formControlName="lastName"
+                        required
+                    >
+                </div>
+                <div class="text-field">
+                    <label for="email">Email:</label>
+                    <input
+                        type="email"
+                        id="email"
+                        name="email"
+                        placeholder="Your Email"
+                        formControlName="email"
+                        required
+                    >
+                    <img
+                        alt="Email Icon"
+                        title="Email Icon"
+                        src="assets/email.svg"
+                    >
+                </div>
+                <div class="text-field">
+                    <label for="password">Password:</label>
+                    <input
+                        id="password"
+                        type="password"
+                        name="password"
+                        placeholder="Your Password"
+                        title="Minimum 6 characters at 
+                            least 1 Alphabet and 1 Number"
+                        pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,}$"
+                        formControlName="password"
+                        required
+                    >
+                    <img
+                        alt="Password Icon"
+                        title="Password Icon"
+                        src="assets/password.svg"
+                    >
+                </div>
+                <div class="text-field">
+                    <label for="confirmPassword">Confirm Password:</label>
+                    <input
+                        id="confirmPassword"
+                        type="password"
+                        name="confirmPassword"
+                        placeholder="Confirm Password"
+                        formControlName="confirmPassword"
+                        required
+                    >
+                    <img
+                        alt="Password Icon"
+                        title="Password Icon"
+                        src="assets/password.svg"
+                    >
+                </div>
+                <input type="submit" class="my-form__button" value="Register">
+                <div class="my-form__actions">
+                    <div class="my-form__row">
+                        <span>Already have an account?</span>
+                        <a title="Login" routerLink="/login">Login</a>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="info-side">
+        <img src="assets/mock.png" alt="Mock" class="mockup">
+        <div class="welcome-message">
+            <h2>Navitron Maps! 👋</h2>
+            <p>Your ultimate guide to navigating the world and discovering new places with ease.</p>
+        </div>
+    </div>
+</div>
