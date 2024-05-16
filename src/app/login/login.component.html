@@ -1,93 +1,61 @@
-<div class="login-wrapper">
-    <div class="login-side">
-        <a href="#" title="Logo">
-            <img class="logo" src="assets/logo.png" alt="Logo">
-        </a>
-        <div class="my-form__wrapper">
-            <div class="login-welcome-row">
-                <h1>Welcome back 👏</h1>
-                <p>Please enter your details!</p>
+<div class="container">
+
+    <!-- Outer Row -->
+    <div class="row justify-content-center">
+
+        <div class="col-xl-10 col-lg-12 col-md-9">
+
+            <div class="card o-hidden border-0 shadow-lg my-5">
+                <div class="card-body p-0">
+                    <!-- Nested Row within Card Body -->
+                    <div class="row">
+                        <div class="col-lg-6 d-none d-lg-block bg-login-image"></div>
+                        <div class="col-lg-6">
+                            <div class="p-5">
+                                <div class="text-center">
+                                    <h1 class="h4 text-gray-900 mb-4">Welcome Back!</h1>
+                                </div>
+                                <form class="user" *ngIf="loginForm" [formGroup]="loginForm" (ngSubmit)="handleLogin()">
+                                    <div class="form-group">
+                                        <input type="email" formControlName="email" class="form-control form-control-user"
+                                            id="exampleInputEmail" aria-describedby="emailHelp"
+                                            placeholder="Enter Email Address...">
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="password" formControlName="password" class="form-control form-control-user"
+                                            id="exampleInputPassword" placeholder="Password">
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="custom-control custom-checkbox small">
+                                            <input type="checkbox" class="custom-control-input" id="customCheck">
+                                            <label class="custom-control-label" for="customCheck">Remember
+                                                Me</label>
+                                        </div>
+                                    </div>
+                                    <input type="submit" value="Login" class="btn btn-primary btn-user btn-block">
+                                    <hr>
+                                    <a href="index.html" class="btn btn-google btn-user btn-block">
+                                        <i class="fab fa-google fa-fw"></i> Login with Google
+                                    </a>
+                                    <a href="index.html" class="btn btn-facebook btn-user btn-block">
+                                        <i class="fab fa-facebook-f fa-fw"></i> Login with Facebook
+                                    </a>
+                                </form>
+                                <hr>
+                                <div class="text-center">
+                                    <a class="small" href="forgot-password.html">Forgot Password?</a>
+                                </div>
+                                <div class="text-center">
+                                    <a class="small" style="cursor: pointer;" (click)="toRegister()">Create an Account!</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <form class="my-form">
-                <div class="socials-row">
-                    <a
-                        href="#"
-                        title="Use Google"
-                    >
-                        <img src="assets/google.png" alt="Google">
-                        Log in with Google
-                    </a>
-                    <a
-                        href="#"
-                        title="Use Apple"
-                    >
-                        <img src="assets/apple.png" alt="Apple">
-                        Log in with Apple
-                    </a>
-                </div>
-                <div class="divider">
-                    <div class="divider-line"></div>
-                    Or
-                    <div class="divider-line"></div>
-                </div>
-                <div class="text-field">
-                    <label for="email">Email:</label>
-                    <input
-                        type="email"
-                        id="email"
-                        name="email"
-                        placeholder="Your Email"
-                        required
-                    >
-                    <img
-                        alt="Email Icon"
-                        title="Email Icon"
-                        src="assets/email.svg"
-                    >
-                </div>
-                <div class="text-field">
-                    <label for="password">Password:</label>
-                    <input
-                        id="password"
-                        type="password"
-                        name="password"
-                        placeholder="Your Password"
-                        title="Minimum 6 characters at 
-                            least 1 Alphabet and 1 Number"
-                        pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,}$"
-                        required
-                    >
-                    <img
-                        alt="Password Icon"
-                        title="Password Icon"
-                        src="assets/password.svg"
-                    >
-                </div>
-                <input type="submit" class="my-form__button" value="Login">
-                <div class="my-form__actions">
-                    <div class="my-form__row">
-                        <span>Did you forget your password?</span>
-                        <a href="#" title="Reset Password">
-                            Reset Password
-                        </a>
-                    </div>
-                    <div class="my-form__signup">
-                        <a title="Create Account" routerLink="/register">
-                            Create Account
-                        </a>
-                    </div>
-                </div>
-            </form>
+
         </div>
+
     </div>
-    <div class="info-side">
-        <img src="assets/mock.png" alt="Mock" class="mockup">
-        <div class="welcome-message">
-            <h2>Navitron Maps! 👋</h2>
-            <p>
-               Your ultimate guide to navigating the world 
-               and discovering new places with ease.
-            </p>    
-        </div>
-    </div>
+
 </div>

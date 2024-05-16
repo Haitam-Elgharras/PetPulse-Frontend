@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from '../services/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-register',
@@ -8,13 +9,14 @@ import { AuthService } from '../services/auth.service';
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent {
+
   registrationForm: FormGroup;
   loading = false;
   submitted = false;
   error = '';
   jwtToken = '';
 
-  constructor(private fb: FormBuilder, private authService: AuthService) {
+  constructor(private fb: FormBuilder, private authService: AuthService, private router: Router) {
     this.registrationForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(6)]],
@@ -40,11 +42,10 @@ export class RegisterComponent {
     this.authService.register(this.registrationForm.value)
       .subscribe({
         next: (data) => {
-          this.loading = false;
+          this.router.navigateByUrl('/login');
           this.jwtToken = data;
           console.log(this.jwtToken);
           this.registrationForm.reset();
-          alert('Registration successful' + this.jwtToken);
         },
         error: error => {
           this.error = error;
@@ -52,4 +53,8 @@ export class RegisterComponent {
         }
       });
   }
+
+  toLogin() {
+    this.router.navigateByUrl('/login');
+    }
 }
