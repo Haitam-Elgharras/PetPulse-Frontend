@@ -6,7 +6,7 @@ import { Router } from '@angular/router';
 import { jwtDecode } from 'jwt-decode';
 
 interface AuthResponse {
-  'access-token': string;
+  'token': string;
 }
 
 @Injectable({
@@ -37,12 +37,14 @@ export class AuthService {
       firstName: value.firstName,
       lastName: value.lastName
     }
+
+    console.log(user);
     return this.http.post<any>(this.baseUrl + '/auth/register', user);
   }
 
   loadProfile(data: AuthResponse) {
     this.isAuthenticated = true;
-    this.accessToken = data['access-token'];
+    this.accessToken = data['token'];
 
     let decodedJwt:any = jwtDecode(this.accessToken);
 
@@ -56,7 +58,7 @@ export class AuthService {
   loadJwtFromLocalStorage() {
     let jwt = localStorage.getItem('jwt-token');
     if (jwt){
-      this.loadProfile({ 'access-token': jwt });
+      this.loadProfile({ 'token': jwt });
       this.router.navigateByUrl('/home');
     }
   }
