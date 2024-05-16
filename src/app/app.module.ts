@@ -9,6 +9,7 @@ import { LoginComponent } from './login/login.component';
 import { HttpClientModule } from '@angular/common/http';
 import { HomeComponent } from './home/home.component';
 import { NotAuthorizedComponent } from './not-authorized/not-authorized.component';
+import { AdminComponent } from './admin/admin.component';
 
 @NgModule({
   declarations: [
@@ -17,6 +18,7 @@ import { NotAuthorizedComponent } from './not-authorized/not-authorized.componen
     RegisterComponent,
     HomeComponent,
     NotAuthorizedComponent,
+    AdminComponent,
 ],
   imports: [
     BrowserModule,
