@@ -48,8 +48,10 @@ export class AuthService {
 
     let decodedJwt:any = jwtDecode(this.accessToken);
 
+    console.log(decodedJwt);
+
     this.username = decodedJwt.sub;
-    this.roles = decodedJwt.scope;
+    this.roles = decodedJwt.role;
 
     // set the access token in local storage
     localStorage.setItem('jwt-token', this.accessToken);
