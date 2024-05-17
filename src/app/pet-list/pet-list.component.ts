@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {Pet} from "../models/pet.model";
 import {PetManagementService} from "../services/pet-management.service";
+import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 
 @Component({
   selector: 'app-pet-list',
@@ -14,15 +15,23 @@ export class PetListComponent implements OnInit {
   currentPage: number = 1;
   itemsPerPage: number = 4;
   totalPages: number = 1;
+  searchFormGroup! : FormGroup;
 
-  constructor(private petService: PetManagementService) {}
-
-  ngOnInit(): void {
-    this.getPets(this.userId);
+  constructor(private petService: PetManagementService, private fb: FormBuilder) {
+    this.searchFormGroup = this.fb.group({
+      search: ''
+    });
   }
 
-  getPets(userId : number): void {
-    this.petService.getPetsByUserId(userId, this.currentPage - 1, this.itemsPerPage).subscribe(response => {
+  ngOnInit(): void {
+    this.getPets();
+    this.searchFormGroup.get('search')?.valueChanges.subscribe(value => {
+      this.onSearch(value);
+    });
+  }
+
+  getPets(): void {
+    this.petService.getPetsByUserId(this.userId, '', this.currentPage - 1, this.itemsPerPage).subscribe(response => {
       this.pets = response.content;
       this.totalPages = response.totalPages;
     });
@@ -30,7 +39,15 @@ export class PetListComponent implements OnInit {
 
   onPageChange(newPage: number): void {
     this.currentPage = newPage;
-    this.getPets(this.userId);
+    this.getPets();
+  }
+
+  onSearch(searchTerm: string): void {
+    console.log('Search term:', searchTerm);
+    this.petService.getPetsByUserId(this.userId, searchTerm, this.currentPage - 1, this.itemsPerPage).subscribe(response => {
+      this.pets = response.content;
+      this.totalPages = response.totalPages;
+    });
   }
 
 }

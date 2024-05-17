@@ -13,8 +13,8 @@ export class PetManagementService {
 
   baseUrl = environment.baseUrl;
 
-  getPetsByUserId(userId: number, page: number, size: number): Observable<any> {
-    return this.http.get<any>(`${this.baseUrl}/pets/user/${userId}?page=${page}&size=${size}`);
+  public getPetsByUserId(userId: number, name : string, page: number, size: number): Observable<any> {
+    return this.http.get<any>(`${this.baseUrl}/pets/user/${userId}?name=${name}&page=${page}&size=${size}`);
   }
 
   public createPet(petData: FormData): Observable<any> {
