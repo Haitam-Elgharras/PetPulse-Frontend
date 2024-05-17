@@ -7,14 +7,20 @@ import { NotAuthorizedComponent } from './not-authorized/not-authorized.componen
 import { authorizationGuard } from './guards/authorization.guard';
 import { AdminComponent } from './admin/admin.component';
 import { AuthenticationGuard } from './guards/authentication.guard';
+import {PetListComponent} from "./pet-list/pet-list.component";
+import {PetFormComponent} from "./pet-form/pet-form.component";
+import {PetDetailsComponent} from "./pet-details/pet-details.component";
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'notAuthorized', component: NotAuthorizedComponent },
   { path: 'admin', component: AdminComponent, canActivate: [AuthenticationGuard,authorizationGuard] },
-  { path: 'home', component: HomeComponent, canActivate: [AuthenticationGuard] },
-  { path: '', redirectTo: '/login', pathMatch: 'full' }
+  { path: 'home', component: HomeComponent},
+  { path: 'pets', component: PetListComponent},
+  { path: '', redirectTo: '/login', pathMatch: 'full' },
+  { path: 'new-pet', component: PetFormComponent},
+  { path: 'pet-details/:id', component: PetDetailsComponent },
 ];
 
 @NgModule({

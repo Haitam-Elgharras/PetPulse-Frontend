@@ -10,6 +10,11 @@ import { HttpClientModule } from '@angular/common/http';
 import { HomeComponent } from './home/home.component';
 import { NotAuthorizedComponent } from './not-authorized/not-authorized.component';
 import { AdminComponent } from './admin/admin.component';
+import { PetListComponent } from './pet-list/pet-list.component';
+import { PetCardComponent } from './pet-card/pet-card.component';
+import { PetFormComponent } from './pet-form/pet-form.component';
+import { PetDetailsComponent } from './pet-details/pet-details.component';
+import { PaginationComponent } from './pagination/pagination.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +24,11 @@ import { AdminComponent } from './admin/admin.component';
     HomeComponent,
     NotAuthorizedComponent,
     AdminComponent,
+    PetListComponent,
+    PetCardComponent,
+    PetFormComponent,
+    PetDetailsComponent,
+    PaginationComponent,
 ],
   imports: [
     BrowserModule,
