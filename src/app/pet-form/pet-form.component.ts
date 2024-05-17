@@ -38,7 +38,7 @@ export class PetFormComponent implements OnInit{
       const formData = new FormData();
       formData.append('name', this.petFormGroup.get('name')!.value);
       formData.append('breed', this.petFormGroup.get('breed')!.value);
-      formData.append('specie', 'DOG');
+      formData.append('specie', this.petFormGroup.get('specie')!.value);
       formData.append('age', this.petFormGroup.get('age')!.value);
       formData.append('ownerId', this.petFormGroup.get('ownerId')!.value);
       this.selectedFiles.forEach(file => {
