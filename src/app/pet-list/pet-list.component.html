@@ -69,14 +69,22 @@
     </button>
   </div>
 </header>
-<section class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 p-4 md:p-6">
-  <app-pet-card *ngFor="let pet of pets" [pet]="pet"></app-pet-card>
-</section>
 
-<div class="flex justify-center mt-4">
-  <app-pagination
-    [currentPage]="currentPage"
-    [totalPages]="totalPages"
-    (pageChange)="onPageChange($event)"
-  ></app-pagination>
-</div>
+<ng-container *ngIf="pets.length === 0; else petList">
+  <div class="flex flex-col items-center justify-center h-screen">
+    <h2 class="text-2xl font-bold mb-2">No Pets Found</h2>
+    <p class="text-gray-500 dark:text-gray-400">It looks like there are no pets to display at the moment.</p>
+  </div>
+</ng-container>
+<ng-template #petList>
+  <section class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 p-4 md:p-6">
+    <app-pet-card *ngFor="let pet of pets" [pet]="pet"></app-pet-card>
+  </section>
+  <div class="flex justify-center mt-4">
+    <app-pagination
+      [currentPage]="currentPage"
+      [totalPages]="totalPages"
+      (pageChange)="onPageChange($event)"
+    ></app-pagination>
+  </div>
+</ng-template>

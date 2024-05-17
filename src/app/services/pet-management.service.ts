@@ -25,4 +25,12 @@ export class PetManagementService {
     return this.http.get<Pet>(`${this.baseUrl}/pets/${petId}`);
   }
 
+  public deletePet(petId: number): Observable<Pet> {
+    return this.http.delete<Pet>(`${this.baseUrl}/pets/${petId}`);
+  }
+
+  public updatePet(petData: FormData, petId : number): Observable<any> {
+    return this.http.put<any>(`${this.baseUrl}/pets/${petId}`, petData);
+  }
+
 }

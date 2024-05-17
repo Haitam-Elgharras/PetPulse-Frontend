@@ -4,7 +4,7 @@
       <h1 class="text-3xl font-bold text-center">Pet Details</h1>
     </div>
     <div class="w-full bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-950 dark:border-gray-800">
-      <form class="grid grid-cols-1 md:grid-cols-2 gap-6 p-6">
+      <form [formGroup]="petFormGroup" (ngSubmit)="updatePet()" class="grid grid-cols-1 md:grid-cols-2 gap-6 p-6">
         <div class="space-y-4">
           <div class="grid grid-cols-3 gap-4">
             <div class="col-span-3">
@@ -42,6 +42,7 @@
               Name
             </label>
             <input
+              formControlName="name"
               class="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
               id="name"
               placeholder="Enter pet name"
@@ -56,6 +57,7 @@
               Breed
             </label>
             <input
+              formControlName="breed"
               class="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
               id="breed"
               placeholder="Enter pet breed"
@@ -71,6 +73,7 @@
             </label>
             <div class="flex items-center space-x-2">
               <input
+                formControlName="age"
                 class="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
                 id="age"
                 min="0"
@@ -84,12 +87,14 @@
             <button
               class="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-10 px-4 py-2"
               type="submit"
+              [disabled]="!petFormGroup.valid"
             >
               Update
             </button>
             <button
               class="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-destructive text-destructive-foreground hover:bg-destructive/90 h-10 px-4 py-2"
               type="button"
+              (click)="deletePet()"
             >
               Delete
             </button>
