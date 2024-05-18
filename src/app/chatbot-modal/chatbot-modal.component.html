@@ -3,7 +3,7 @@
     class="bg-blue-500 text-white font-bold py-3 px-3 rounded-full"
     (click)="openModal()"
   >
-    <img src="assets/chatbot.png" alt="Open Modal" class="h-8 w-8" />
+    <img src="assets/chatbot.png" alt="{{ 'CHATBOT.OPEN_MODAL' | translate }}" class="h-8 w-8" />
   </button>
 </div>
 
@@ -17,7 +17,7 @@
         class="flex h-14 items-center justify-between border-b bg-gray-100 px-4 dark:border-gray-800 dark:bg-gray-950"
       >
         <div class="flex items-center gap-3">
-          <div class="text-sm font-medium">Chatbot</div>
+          <div class="text-sm font-medium">{{ 'CHATBOT.TITLE' | translate }}</div>
         </div>
         <button (click)="closeModal()">
           <svg
@@ -59,7 +59,7 @@
       >
         <input
           class="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 flex-1"
-          placeholder="Type your message..."
+          placeholder="{{ 'CHATBOT.TYPE_MESSAGE' | translate }}"
           type="text"
           [(ngModel)]="userInput"
         />
@@ -69,7 +69,7 @@
           class="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground hover:bg-primary/90 h-10 px-4 py-2"
           (click)="onSubmit()"
         >
-          Send
+          {{ 'CHATBOT.SEND' | translate }}
         </button>
         <!-- Loading spinner -->
         <ng-template #loadingSpinner>

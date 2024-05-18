@@ -5,6 +5,13 @@
     font-family: 'Nunito', sans-serif;
 }
 
+[dir="rtl"] {
+  text-align: right;
+}
+
+[dir="ltr"] {
+  text-align: left;
+}
 
 /* @import "../node_modules/bootstrap/dist/css/bootstrap.css";
 @import "../node_modules/bootstrap-icons/font/bootstrap-icons.css";
