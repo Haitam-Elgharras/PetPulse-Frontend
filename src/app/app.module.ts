@@ -15,6 +15,8 @@ import { PetCardComponent } from './pet-card/pet-card.component';
 import { PetFormComponent } from './pet-form/pet-form.component';
 import { PetDetailsComponent } from './pet-details/pet-details.component';
 import { PaginationComponent } from './pagination/pagination.component';
+import { ChatbotModalComponent } from './chatbot-modal/chatbot-modal.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -29,12 +31,14 @@ import { PaginationComponent } from './pagination/pagination.component';
     PetFormComponent,
     PetDetailsComponent,
     PaginationComponent,
+    ChatbotModalComponent,
 ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
