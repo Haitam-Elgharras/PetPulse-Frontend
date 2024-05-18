@@ -14,13 +14,13 @@ import {PetDetailsComponent} from "./pet-details/pet-details.component";
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
-  { path: 'home', component: HomeComponent},
-  { path: 'pets', component: PetListComponent},
-  { path: 'new-pet', component: PetFormComponent},
-  { path: 'pet-details/:id', component: PetDetailsComponent },
-  { path: 'admin', component: AdminComponent, canActivate: [AuthenticationGuard,authorizationGuard] },
   { path: 'notAuthorized', component: NotAuthorizedComponent },
+  { path: 'admin', component: AdminComponent, canActivate: [AuthenticationGuard,authorizationGuard] },
+  { path: 'home', component: HomeComponent, canActivate: [AuthenticationGuard]},
+  { path: 'pets', component: PetListComponent, canActivate: [AuthenticationGuard]},
   { path: '', redirectTo: '/login', pathMatch: 'full' },
+  { path: 'new-pet', component: PetFormComponent, canActivate: [AuthenticationGuard]},
+  { path: 'pet-details/:id', component: PetDetailsComponent, canActivate: [AuthenticationGuard] },
 ];
 
 @NgModule({

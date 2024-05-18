@@ -24,5 +24,4 @@ export class AppComponent {
   isRegisterPage(): boolean {
     return this.router.url === '/register';
   }
-
 }
