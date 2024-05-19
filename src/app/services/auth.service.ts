@@ -38,7 +38,6 @@ export class AuthService {
       lastName: value.lastName
     }
 
-    console.log(user);
     return this.http.post<any>(this.baseUrl + '/auth/register', user);
   }
 
@@ -47,8 +46,6 @@ export class AuthService {
     this.accessToken = data['token'];
 
     let decodedJwt:any = jwtDecode(this.accessToken);
-
-    console.log(decodedJwt);
 
     this.username = decodedJwt.sub;
     this.roles = decodedJwt.role;
@@ -61,7 +58,7 @@ export class AuthService {
     let jwt = localStorage.getItem('jwt-token');
     if (jwt){
       this.loadProfile({ 'token': jwt });
-      this.router.navigateByUrl('/home');
+      // this.router.navigateByUrl('/home');
     }
   }
 

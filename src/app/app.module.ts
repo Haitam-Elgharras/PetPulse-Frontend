@@ -17,6 +17,7 @@ import { PetDetailsComponent } from './pet-details/pet-details.component';
 import { PaginationComponent } from './pagination/pagination.component';
 import { ChatbotModalComponent } from './chatbot-modal/chatbot-modal.component';
 import { FormsModule } from '@angular/forms';
+import { NavbarComponent } from './navbar/navbar.component';
 
 @NgModule({
   declarations: [
@@ -32,6 +33,7 @@ import { FormsModule } from '@angular/forms';
     PetDetailsComponent,
     PaginationComponent,
     ChatbotModalComponent,
+    NavbarComponent,
 ],
   imports: [
     BrowserModule,
