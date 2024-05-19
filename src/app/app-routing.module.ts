@@ -20,12 +20,14 @@ const routes: Routes = [
   { path: 'notAuthorized', component: NotAuthorizedComponent },
   { path: 'lost-reports/:id', component: ReportDetailsComponent },
   { path: 'admin', component: AdminComponent, canActivate: [AuthenticationGuard,authorizationGuard] },
-  { path: 'home', component: HomeComponent},
-  { path: 'pets', component: PetListComponent},
+  { path: 'home', component: HomeComponent, canActivate: [AuthenticationGuard]},
+  { path: 'pets', component: PetListComponent, canActivate: [AuthenticationGuard]},
   { path: '', redirectTo: '/login', pathMatch: 'full' },
   { path: 'new-pet', component: PetFormComponent},
   { path: 'pet-details/:id', component: PetDetailsComponent },
-  {path:'lost-reports',component:LostReportsComponent}
+  {path:'lost-reports',component:LostReportsComponent},
+  { path: 'new-pet', component: PetFormComponent, canActivate: [AuthenticationGuard]},
+  { path: 'pet-details/:id', component: PetDetailsComponent, canActivate: [AuthenticationGuard] },
 ];
 
 @NgModule({
