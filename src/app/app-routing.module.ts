@@ -13,6 +13,7 @@ import {AuthenticationGuard} from "./guards/authentication.guard";
 import {authorizationGuard} from "./guards/authorization.guard";
 import {LostReportsComponent} from "./lost-reports/lost-reports.component";
 import {ReportDetailsComponent} from "./report-details/report-details.component";
+import { AdoptComponent } from './adopt/adopt.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -27,6 +28,7 @@ const routes: Routes = [
   {path:'lost-reports',component:LostReportsComponent},
   { path: 'new-pet', component: PetFormComponent, canActivate: [AuthenticationGuard]},
   { path: 'pet-details/:id', component: PetDetailsComponent, canActivate: [AuthenticationGuard] },
+  { path: 'adopt', component: AdoptComponent }
   ];
 
 @NgModule({

@@ -23,7 +23,16 @@ import { LanguageSwitcherComponent } from './language-switcher/language-switcher
 import { NavbarComponent } from './navbar/navbar.component';
 import { LostReportsComponent } from './lost-reports/lost-reports.component';
 import { AppHttpInterceptor } from './services/app-http.interceptor';
+import { AdoptComponent } from './adopt/adopt.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { CardComponent } from './components/card/card.component';
 
+import { MatSliderModule } from '@angular/material/slider';
+import { MatIconModule } from '@angular/material/icon';
+import { MatSelectModule } from '@angular/material/select';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { CommonModule } from '@angular/common';
+import { LeafletModule } from '@asymmetrik/ngx-leaflet';
 
 @NgModule({
   declarations: [
@@ -41,7 +50,9 @@ import { AppHttpInterceptor } from './services/app-http.interceptor';
     ChatbotModalComponent,
     LanguageSwitcherComponent,
     NavbarComponent,
-    LostReportsComponent
+    LostReportsComponent,
+    AdoptComponent,
+    CardComponent
 ],
   imports: [
     BrowserModule,
@@ -49,6 +60,14 @@ import { AppHttpInterceptor } from './services/app-http.interceptor';
     ReactiveFormsModule,
     HttpClientModule,
     FormsModule,
+    FontAwesomeModule,
+    MatSliderModule,
+    MatIconModule,
+    MatSelectModule,
+    BrowserAnimationsModule,
+    CommonModule,
+    LeafletModule,
+    
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,

@@ -16,6 +16,7 @@ export interface Report {
   verified: boolean;
   pet_id: number;
   user_id: number;
-  petData: Pet;
-  reporterName:string
+  pet: Pet;
+  reporterName:string,
+  user: any;
 }
