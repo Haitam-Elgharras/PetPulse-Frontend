@@ -6,7 +6,7 @@ import { AppComponent } from './app.component';
 import { RegisterComponent } from './register/register.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { LoginComponent } from './login/login.component';
-import {HttpClient, HttpClientModule} from '@angular/common/http';
+import {HttpClient, HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
 import { HomeComponent } from './home/home.component';
 import { NotAuthorizedComponent } from './not-authorized/not-authorized.component';
 import { AdminComponent } from './admin/admin.component';
@@ -21,8 +21,8 @@ import {TranslateLoader, TranslateModule} from "@ngx-translate/core";
 import {CustomTranslateLoader} from "./translate/translate-loader";
 import { LanguageSwitcherComponent } from './language-switcher/language-switcher.component';
 import { NavbarComponent } from './navbar/navbar.component';
-import { RouterModule } from '@angular/router';
 import { LostReportsComponent } from './lost-reports/lost-reports.component';
+import { AppHttpInterceptor } from './services/app-http.interceptor';
 
 
 @NgModule({
@@ -57,7 +57,13 @@ import { LostReportsComponent } from './lost-reports/lost-reports.component';
       }
     }),
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AppHttpInterceptor,
+      multi: true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

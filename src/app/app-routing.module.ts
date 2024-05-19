@@ -23,7 +23,6 @@ const routes: Routes = [
   { path: 'home', component: HomeComponent, canActivate: [AuthenticationGuard]},
   { path: 'pets', component: PetListComponent, canActivate: [AuthenticationGuard]},
   { path: '', redirectTo: '/login', pathMatch: 'full' },
-  { path: 'new-pet', component: PetFormComponent},
   { path: 'pet-details/:id', component: PetDetailsComponent },
   {path:'lost-reports',component:LostReportsComponent},
   { path: 'new-pet', component: PetFormComponent, canActivate: [AuthenticationGuard]},

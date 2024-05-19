@@ -2,6 +2,7 @@
 module.exports = {
   content: [
     "./src/**/*.{html,ts}",
+    "!./src/app/navbar/**/*",
   ],
   theme: {
     extend: {},

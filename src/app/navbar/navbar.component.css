@@ -1,3 +1,6 @@
+/* @import "../../../node_modules/bootstrap/dist/css/bootstrap.css";
+@import "../../../node_modules/bootstrap-icons/font/bootstrap-icons.css"; */
+
 /* Color of the links BEFORE scroll */
 .navbar-scroll .nav-link,
 .navbar-scroll .fa-bars,
