@@ -11,10 +11,10 @@ import { PetManagementService } from "../services/pet-management.service";
   styleUrls: ['./report-details.component.css']
 })
 export class ReportDetailsComponent implements OnInit {
-  mainImageUrl: string | undefined;
-  reportId: string | undefined; // Define a property to store the report ID
-  reportData: Report | undefined;
-  petData: Pet | undefined;
+  mainImageUrl!: string;
+  reportId!: string; // Define a property to store the report ID
+  reportData!: Report;
+  petData!: Pet;
   private s3BaseUrl = 'https://petpulse.s3.amazonaws.com/';
 
   constructor(

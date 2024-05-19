@@ -28,7 +28,7 @@ const routes: Routes = [
   {path:'lost-reports',component:LostReportsComponent},
   { path: 'new-pet', component: PetFormComponent, canActivate: [AuthenticationGuard]},
   { path: 'pet-details/:id', component: PetDetailsComponent, canActivate: [AuthenticationGuard] },
-];
+  ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

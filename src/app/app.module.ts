@@ -20,6 +20,10 @@ import { FormsModule } from '@angular/forms';
 import {TranslateLoader, TranslateModule} from "@ngx-translate/core";
 import {CustomTranslateLoader} from "./translate/translate-loader";
 import { LanguageSwitcherComponent } from './language-switcher/language-switcher.component';
+import { NavbarComponent } from './navbar/navbar.component';
+import { RouterModule } from '@angular/router';
+import { LostReportsComponent } from './lost-reports/lost-reports.component';
+
 
 @NgModule({
   declarations: [
@@ -36,6 +40,8 @@ import { LanguageSwitcherComponent } from './language-switcher/language-switcher
     PaginationComponent,
     ChatbotModalComponent,
     LanguageSwitcherComponent,
+    NavbarComponent,
+    LostReportsComponent
 ],
   imports: [
     BrowserModule,
