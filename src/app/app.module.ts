@@ -6,7 +6,7 @@ import { AppComponent } from './app.component';
 import { RegisterComponent } from './register/register.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { LoginComponent } from './login/login.component';
-import { HttpClientModule } from '@angular/common/http';
+import {HttpClient, HttpClientModule} from '@angular/common/http';
 import { HomeComponent } from './home/home.component';
 import { NotAuthorizedComponent } from './not-authorized/not-authorized.component';
 import { AdminComponent } from './admin/admin.component';
@@ -17,7 +17,9 @@ import { PetDetailsComponent } from './pet-details/pet-details.component';
 import { PaginationComponent } from './pagination/pagination.component';
 import { ChatbotModalComponent } from './chatbot-modal/chatbot-modal.component';
 import { FormsModule } from '@angular/forms';
-import { NavbarComponent } from './navbar/navbar.component';
+import {TranslateLoader, TranslateModule} from "@ngx-translate/core";
+import {CustomTranslateLoader} from "./translate/translate-loader";
+import { LanguageSwitcherComponent } from './language-switcher/language-switcher.component';
 
 @NgModule({
   declarations: [
@@ -33,14 +35,21 @@ import { NavbarComponent } from './navbar/navbar.component';
     PetDetailsComponent,
     PaginationComponent,
     ChatbotModalComponent,
-    NavbarComponent,
+    LanguageSwitcherComponent,
 ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useClass: CustomTranslateLoader,
+        deps: [HttpClient]
+      }
+    }),
   ],
   providers: [],
   bootstrap: [AppComponent]

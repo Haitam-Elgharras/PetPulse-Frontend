@@ -5,6 +5,13 @@
     font-family: 'Nunito', sans-serif;
 }
 
+[dir="rtl"] {
+  text-align: right;
+}
+
+[dir="ltr"] {
+  text-align: left;
+}
 
 
 .cursor-pointer {

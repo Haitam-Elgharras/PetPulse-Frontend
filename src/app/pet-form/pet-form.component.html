@@ -1,7 +1,7 @@
 <div class="mx-auto max-w-md space-y-6 py-12">
   <div class="space-y-2 text-center">
-    <h1 class="text-3xl font-bold">Add a New Pet</h1>
-    <p class="text-gray-500 dark:text-gray-400">Fill out the form to create a new pet profile.</p>
+    <h1 class="text-3xl font-bold">{{ 'PET_FORM.TITLE' | translate }}</h1>
+    <p class="text-gray-500 dark:text-gray-400">{{ 'PET_FORM.SUBTITLE' | translate }}</p>
   </div>
   <form [formGroup]="petFormGroup" (ngSubmit)="onSubmit()" class="space-y-4">
     <div class="grid grid-cols-2 gap-4">
@@ -10,7 +10,7 @@
           class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
           for="name"
         >
-          Name
+          {{ 'PET_FORM.NAME' | translate }}
         </label>
         <input
           formControlName="name"
@@ -25,7 +25,7 @@
           class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
           for="breed"
         >
-          Breed
+          {{ 'PET_FORM.BREED' | translate }}
         </label>
         <input
           formControlName="breed"
@@ -42,7 +42,7 @@
           class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
           for="age"
         >
-          Age
+          {{ 'PET_FORM.AGE' | translate }}
         </label>
         <input
           formControlName="age"
@@ -59,7 +59,7 @@
           class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
           for="species"
         >
-          Species
+          {{ 'PET_FORM.SPECIES' | translate }}
         </label>
         <select
           formControlName="specie"
@@ -67,10 +67,10 @@
           id="species"
           required
         >
-          <option value="" disabled>Select species</option>
-            <option value="DOG">Dog</option>
-          <option value="CAT">Cat</option>
-          <option value="BIRD">Bird</option>
+          <option value="" disabled>{{ 'PET_FORM.SELECT_SPECIES' | translate }}</option>
+          <option value="DOG">{{ 'PET_FORM.DOG' | translate }}</option>
+          <option value="CAT">{{ 'PET_FORM.CAT' | translate }}</option>
+          <option value="BIRD">{{ 'PET_FORM.BIRD' | translate }}</option>
         </select>
       </div>
     </div>
@@ -79,7 +79,7 @@
         class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
         for="image"
       >
-        Pet Image
+        {{ 'PET_FORM.PET_IMAGE' | translate }}
       </label>
       <div class="flex items-center gap-4">
         <div class="flex items-center justify-center w-full">
@@ -105,9 +105,9 @@
                 <line x1="12" x2="12" y1="3" y2="15"></line>
               </svg>
               <p class="mb-2 text-sm text-gray-500 dark:text-gray-400">
-                <span class="font-semibold">Click to upload</span> or drag and drop
+                <span class="font-semibold">{{ 'PET_FORM.CLICK_TO_UPLOAD' | translate }}</span> {{ 'PET_FORM.OR_DRAG_AND_DROP' | translate }}
               </p>
-              <p class="text-xs text-gray-500 dark:text-gray-400">SVG, PNG, JPG or GIF (MAX. 800x400px)</p>
+              <p class="text-xs text-gray-500 dark:text-gray-400">{{ 'PET_FORM.IMAGE_FORMAT_AND_SIZE' | translate }}</p>
             </div>
             <input id="image" class="hidden" formControlName="image" type="file" multiple (change)="onFileChange($event)" />
           </label>
@@ -122,7 +122,7 @@
       type="submit"
       [disabled]="!petFormGroup.valid || !selectedFiles"
     >
-      Save Pet
+      {{ 'PET_FORM.SAVE_PET' | translate }}
     </button>
   </form>
 </div>
