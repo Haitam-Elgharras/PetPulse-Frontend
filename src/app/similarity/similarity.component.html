@@ -1,0 +1,16 @@
+<div class="upload-container">
+  <mat-card>
+    <mat-card-title>Upload Image</mat-card-title>
+    <mat-card-content>
+      <div class="file-input-container">
+        <input type="file" (change)="onFileSelected($event)" accept="image/*" hidden #fileInput>
+        <button mat-raised-button color="primary" (click)="fileInput.click()">Choose Image</button>
+      </div>
+      <div *ngIf="selectedFile" class="image-preview-container">
+        <img [src]="imagePreview" alt="Image Preview" class="image-preview">
+        <button mat-raised-button color="accent" (click)="onUpload()">Upload</button>
+      </div>
+    </mat-card-content>
+  </mat-card>
+  <mat-progress-bar *ngIf="isLoading" mode="determinate" [value]="uploadProgress"></mat-progress-bar>
+</div>

@@ -1,0 +1,59 @@
+<div class="container mx-auto p-4">
+  <h1 class="text-2xl font-bold mb-4">Edit Report</h1>
+
+  <form>
+    <div class="mb-4">
+      <label for="title" class="block text-sm font-medium text-gray-700">Title</label>
+      <input type="text" id="title" name="title" [value]="reportData?.title" class="form-input">
+    </div>
+
+    <div class="mb-4">
+      <label for="description" class="block text-sm font-medium text-gray-700">Description</label>
+      <textarea id="description" name="description" [value]="reportData?.description" class="form-textarea"></textarea>
+    </div>
+
+    <div class="mb-4">
+      <label for="city" class="block text-sm font-medium text-gray-700">City</label>
+      <input type="text" id="city" name="city" [value]="reportData?.city" class="form-input">
+    </div>
+
+    <div class="mb-4">
+      <label for="address" class="block text-sm font-medium text-gray-700">Address</label>
+      <input type="text" id="address" name="address" [value]="reportData?.address" class="form-input">
+    </div>
+
+    <div class="mb-4">
+      <label for="type" class="block text-sm font-medium text-gray-700">Type</label>
+      <input type="text" id="type" name="type" [value]="reportData?.type" class="form-input">
+    </div>
+
+    <div class="mb-4">
+      <label for="status" class="block text-sm font-medium text-gray-700">Status</label>
+      <input type="text" id="status" name="status" [value]="reportData?.status" class="form-input">
+    </div>
+    <div class="mb-4">
+      <label for="status" class="block text-sm font-medium text-gray-700">Concerned Pet</label>
+      <select id="petSelect" name="petSelect" class="form-select" [(ngModel)]="selectedPetId">
+        <option value="" selected disabled>Select a pet</option>
+        <ng-container *ngFor="let pet of pets">
+          <option [value]="pet.id" [selected]="pet.id === selectedPetId">{{ pet.name }}</option>
+        </ng-container>
+      </select>
+    </div>
+    <div class="mb-4 form-textarea">
+      <label for="additionalNotes" class="block text-sm font-medium text-gray-700">Additional Notes</label>
+      <textarea id="additionalNotes" name="additionalNotes" [value]="reportData?.additionalNotes" class="form-textarea"></textarea>
+    </div>
+
+    <div class="mt-4 flex justify-center">
+      <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mr-2">
+        Save Changes
+      </button>
+      <button type="button" class="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded">
+        Cancel
+      </button>
+    </div>
+
+
+  </form>
+</div>

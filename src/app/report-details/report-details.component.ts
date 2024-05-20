@@ -11,7 +11,7 @@ import { PetManagementService } from "../services/pet-management.service";
   styleUrls: ['./report-details.component.css']
 })
 export class ReportDetailsComponent implements OnInit {
-  mainImageUrl: string | undefined;
+  mainImageUrl: String | undefined ;
   reportId: string | undefined; // Define a property to store the report ID
   reportData: Report | undefined;
   petData: Pet | undefined;
@@ -60,9 +60,8 @@ export class ReportDetailsComponent implements OnInit {
       );
     }
   }
-
-  setMainImage(image: string | undefined) {
-    this.mainImageUrl = this.getImageUrl(image);
+  setMainImage(url: string | undefined) {
+    this.mainImageUrl = url;
   }
   fetchReporterNameForReport(): void {
     this.lostReportsService.getUserById(this.reportData?.user_id).subscribe(

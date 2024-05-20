@@ -20,6 +20,19 @@ import { FormsModule } from '@angular/forms';
 import {TranslateLoader, TranslateModule} from "@ngx-translate/core";
 import {CustomTranslateLoader} from "./translate/translate-loader";
 import { LanguageSwitcherComponent } from './language-switcher/language-switcher.component';
+import {RouterModule} from "@angular/router";
+import {LostReportsComponent} from "./lost-reports/lost-reports.component";
+import {ReportDetailsComponent} from "./report-details/report-details.component";
+import { MyReportsComponent } from './my-reports/my-reports.component';
+import { ManageReportComponent } from './manage-report/manage-report.component';
+import { ShowApplicationsComponent } from './show-applications/show-applications.component';
+import { SimilarityComponent } from './similarity/similarity.component';
+import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
+import {MatButtonModule} from "@angular/material/button";
+import {MatIconModule} from "@angular/material/icon";
+import {MatInputModule} from "@angular/material/input";
+import {MatProgressBarModule} from "@angular/material/progress-bar";
+import {MatCardModule} from "@angular/material/card";
 
 @NgModule({
   declarations: [
@@ -36,6 +49,13 @@ import { LanguageSwitcherComponent } from './language-switcher/language-switcher
     PaginationComponent,
     ChatbotModalComponent,
     LanguageSwitcherComponent,
+    LostReportsComponent,
+    ReportDetailsComponent,
+    MyReportsComponent,
+    ManageReportComponent,
+    ShowApplicationsComponent,
+    SimilarityComponent,
+
 ],
   imports: [
     BrowserModule,
@@ -43,6 +63,11 @@ import { LanguageSwitcherComponent } from './language-switcher/language-switcher
     ReactiveFormsModule,
     HttpClientModule,
     FormsModule,
+    MatButtonModule,
+    MatIconModule,
+    MatInputModule,
+    MatProgressBarModule,
+    MatCardModule,
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
@@ -51,7 +76,9 @@ import { LanguageSwitcherComponent } from './language-switcher/language-switcher
       }
     }),
   ],
-  providers: [],
+  providers: [
+    provideAnimationsAsync()
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

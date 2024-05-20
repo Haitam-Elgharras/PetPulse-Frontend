@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from "@angular/common/http";
+import {HttpClient, HttpHeaders, HttpParams} from "@angular/common/http";
 import { Observable } from "rxjs";
 import { environment } from "../../environments/environment";
 import { PetManagementService } from "./pet-management.service";
@@ -27,4 +27,12 @@ export class LostReportsService {
   getUserById(userId: number | undefined): Observable<any>{
     return this.http.get<any[]>(`${this.baseUrl}/users/${userId}`);
   }
+  getReportsByUserId(userId:number): Observable<any[]> {
+    return this.http.get<any[]>(`${this.baseUrl}/reports/user/${userId}`);
+  }
+
+  getPetsByUserId(userId: string): Observable<any[]> {
+    return this.http.get<any>(`${this.baseUrl}/pets/user/${userId}?&page=0&size=30`)
+  }
+
 }
