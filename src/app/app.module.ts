@@ -1,12 +1,11 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { RegisterComponent } from './register/register.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { LoginComponent } from './login/login.component';
-import {HttpClient, HttpClientModule} from '@angular/common/http';
+import {HttpClient, HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
 import { HomeComponent } from './home/home.component';
 import { NotAuthorizedComponent } from './not-authorized/not-authorized.component';
 import { AdminComponent } from './admin/admin.component';
@@ -33,6 +32,17 @@ import {MatIconModule} from "@angular/material/icon";
 import {MatInputModule} from "@angular/material/input";
 import {MatProgressBarModule} from "@angular/material/progress-bar";
 import {MatCardModule} from "@angular/material/card";
+import { NavbarComponent } from './navbar/navbar.component';
+import { AppHttpInterceptor } from './services/app-http.interceptor';
+import { AdoptComponent } from './adopt/adopt.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { CardComponent } from './components/card/card.component';
+
+import { MatSliderModule } from '@angular/material/slider';
+import { MatSelectModule } from '@angular/material/select';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { CommonModule } from '@angular/common';
+import { LeafletModule } from '@asymmetrik/ngx-leaflet';
 
 @NgModule({
   declarations: [
@@ -56,6 +66,10 @@ import {MatCardModule} from "@angular/material/card";
     ShowApplicationsComponent,
     SimilarityComponent,
 
+    NavbarComponent,
+    LostReportsComponent,
+    AdoptComponent,
+    CardComponent
 ],
   imports: [
     BrowserModule,
@@ -68,6 +82,14 @@ import {MatCardModule} from "@angular/material/card";
     MatInputModule,
     MatProgressBarModule,
     MatCardModule,
+    FontAwesomeModule,
+    MatSliderModule,
+    MatIconModule,
+    MatSelectModule,
+    BrowserAnimationsModule,
+    CommonModule,
+    LeafletModule,
+
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
@@ -77,7 +99,12 @@ import {MatCardModule} from "@angular/material/card";
     }),
   ],
   providers: [
-    provideAnimationsAsync()
+    provideAnimationsAsync(),
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AppHttpInterceptor,
+      multi: true
+    }
   ],
   bootstrap: [AppComponent]
 })

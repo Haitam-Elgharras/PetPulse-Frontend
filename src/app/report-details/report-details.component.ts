@@ -15,6 +15,7 @@ export class ReportDetailsComponent implements OnInit {
   reportId: string | undefined; // Define a property to store the report ID
   reportData: Report | undefined;
   petData: Pet | undefined;
+
   private s3BaseUrl = 'https://petpulse.s3.amazonaws.com/';
 
   constructor(

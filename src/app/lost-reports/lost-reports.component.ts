@@ -3,6 +3,7 @@ import {LostReportsService} from "../services/lost-reports.service";
 import {PetManagementService} from "../services/pet-management.service";
 import {Pet} from "../models/pet.model";
 
+
 @Component({
   selector: 'app-lost-reports',
   templateUrl: './lost-reports.component.html',

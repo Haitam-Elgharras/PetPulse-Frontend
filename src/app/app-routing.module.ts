@@ -17,6 +17,7 @@ import {MyReportsComponent} from "./my-reports/my-reports.component";
 import {ManageReportComponent} from "./manage-report/manage-report.component";
 import {ShowApplicationsComponent} from "./show-applications/show-applications.component";
 import {SimilarityComponent} from "./similarity/similarity.component";
+import { AdoptComponent } from './adopt/adopt.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -27,7 +28,6 @@ const routes: Routes = [
   { path: 'home', component: HomeComponent, canActivate: [AuthenticationGuard]},
   { path: 'pets', component: PetListComponent, canActivate: [AuthenticationGuard]},
   { path: '', redirectTo: '/login', pathMatch: 'full' },
-  { path: 'new-pet', component: PetFormComponent},
   { path: 'pet-details/:id', component: PetDetailsComponent },
   {path:'lost-reports',component:LostReportsComponent},
   {path:'my-reports',component:MyReportsComponent},
@@ -36,7 +36,8 @@ const routes: Routes = [
   {path:'similarity',component:SimilarityComponent},
   { path: 'new-pet', component: PetFormComponent, canActivate: [AuthenticationGuard]},
   { path: 'pet-details/:id', component: PetDetailsComponent, canActivate: [AuthenticationGuard] },
-];
+  { path: 'adopt', component: AdoptComponent }
+  ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
