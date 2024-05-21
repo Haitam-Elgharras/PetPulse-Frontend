@@ -1,5 +1,6 @@
 import {Component, Input} from '@angular/core';
 import {Pet} from "../models/pet.model";
+import {environment} from "../../environments/environment";
 
 @Component({
   selector: 'app-pet-card',
@@ -9,8 +10,8 @@ import {Pet} from "../models/pet.model";
 export class PetCardComponent {
   @Input() pet!: Pet;
 
-  // S3 bucket URL
-  private s3BaseUrl = 'https://petpulse.s3.amazonaws.com/';
+  s3BaseUrl: string = environment.s3BaseUrl;
+
 
   getImageUrl(image: string): string {
     return `${this.s3BaseUrl}${image}`;
