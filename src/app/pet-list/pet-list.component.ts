@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {Pet} from "../models/pet.model";
 import {PetManagementService} from "../services/pet-management.service";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-pet-list',
@@ -10,20 +11,21 @@ import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 })
 export class PetListComponent implements OnInit {
 
-  userId : number = 1;
+  userId! : number;
   pets: Pet[] = [];
   currentPage: number = 1;
   itemsPerPage: number = 4;
   totalPages: number = 1;
   searchFormGroup! : FormGroup;
 
-  constructor(private petService: PetManagementService, private fb: FormBuilder) {
+  constructor(private petService: PetManagementService, private fb: FormBuilder, private authService: AuthService) {
     this.searchFormGroup = this.fb.group({
       search: ''
     });
   }
 
   ngOnInit(): void {
+    this.userId = this.authService.id;
     this.getPets();
     this.searchFormGroup.get('search')?.valueChanges.subscribe(value => {
       this.onSearch(value);
