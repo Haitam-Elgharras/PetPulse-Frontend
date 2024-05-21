@@ -1,6 +1,6 @@
 import {Component, Input} from '@angular/core';
 import {Pet} from "../models/pet.model";
-import {environment} from "../../environments/environment";
+import { PetManagementService } from '../services/pet-management.service';
 
 @Component({
   selector: 'app-pet-card',
@@ -10,10 +10,9 @@ import {environment} from "../../environments/environment";
 export class PetCardComponent {
   @Input() pet!: Pet;
 
-  s3BaseUrl: string = environment.s3BaseUrl;
+  constructor(public petService: PetManagementService) {}
 
-
-  getImageUrl(image: string): string {
-    return `${this.s3BaseUrl}${image}`;
+  ngOnInit() {
+    console.log("from pet card component", this.pet);
   }
 }

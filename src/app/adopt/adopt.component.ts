@@ -7,6 +7,7 @@ import { PetManagementService } from '../services/pet-management.service';
 import { AuthService } from '../services/auth.service';
 import { Report } from '../models/report.model';
 import { AdoptService } from '../services/adopt.service';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -32,15 +33,11 @@ export class AdoptComponent implements OnInit {
     private PetsService: PetManagementService,
     private authService: AuthService,
     private adoptService: AdoptService,
+    public router: Router
   ) {}
 
   ngOnInit() {
-    this.getAdoptionReports(
-      // this.page,
-      // this.size,
-      // this.city
-    );
-  
+    this.getAdoptionReports();
   }
 
 
@@ -94,43 +91,17 @@ export class AdoptComponent implements OnInit {
     );
   };
 
-  getAdoptionReports = (
-  ) => {
-      // this.adoptionPosts = Array.from({ length: 10 }, (_, i) => ({
-      //   id: i,
-      //   title: `Adoption Post ${i}`,
-      //   description: `This is a description for Adoption Post ${i}`,
-      //   latitude: Math.random() * 100,
-      //   longitude: Math.random() * 100,
-      //   city: `City ${i}`,
-      //   address: `Address ${i}`,
-      //   type: 'Adoption',
-      //   status: 'Available',
-      //   additionalNotes: `Additional notes for Adoption Post ${i}`,
-      //   createdAt: new Date(),
-      //   updatedAt: new Date(),
-      //   verified: Math.random() > 0.5,
-      //   pet_id: i,
-      //   user_id: i,
-      //   petData: {
-      //     id: i,
-      //     name: `Pet ${i}`,
-      //     specie: Math.random() > 0.5 ? 'Dog' : 'Cat',
-      //     breed: Math.random() > 0.5 ? 'Breed 1' : 'Breed 2',
-      //     age: `${Math.random() * 10} years`,
-      //     images: [
-      //       "https://images.unsplash.com/photo-1444212477490-ca407925329e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8OXx8ZG9nc3xlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60",
-      //       "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8ZG9nc3xlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
-      //     ]
-      //   },
-      //   reporterName: `Reporter ${i}`
-      // })); 
-
+  getAdoptionReports = () => {
       this.adoptService.getAdoptionReports(this.page, this.size, this.city,this.breed,this.specie,this.petAgeStart,this.petAgeEnd).subscribe(
         {
           next: (response) => {
-            this.adoptionPosts = response.content;
-            console.log(this.adoptionPosts);
+            this.adoptionPosts = response.content.map((report: any) => ({
+              ...report,
+              pet: {
+                ...report.pet,
+                images: report.pet.images.map((image: any) => image.url)
+              }
+            }));
           },
           error: (error) => {
             console.log(error);

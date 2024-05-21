@@ -12,6 +12,7 @@ export class PetManagementService {
   constructor(private http : HttpClient) { }
 
   baseUrl = environment.baseUrl;
+    s3BaseUrl: string = environment.s3BaseUrl;
 
   public getPetsByUserId(userId: number, name : string, page: number, size: number): Observable<any> {
     return this.http.get<any>(`${this.baseUrl}/pets/user/${userId}?name=${name}&page=${page}&size=${size}`);
@@ -31,6 +32,10 @@ export class PetManagementService {
 
   public updatePet(petData: FormData, petId : number): Observable<any> {
     return this.http.put<any>(`${this.baseUrl}/pets/${petId}`, petData);
+  }
+
+  public getImageUrl(image: string): string {
+    return `${this.s3BaseUrl}${image}`;
   }
 
 }

@@ -43,6 +43,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CommonModule } from '@angular/common';
 import { LeafletModule } from '@asymmetrik/ngx-leaflet';
+import { AdoptFormComponent } from './adopt-form/adopt-form.component';
 
 @NgModule({
   declarations: [
@@ -69,7 +70,8 @@ import { LeafletModule } from '@asymmetrik/ngx-leaflet';
     NavbarComponent,
     LostReportsComponent,
     AdoptComponent,
-    CardComponent
+    CardComponent,
+    AdoptFormComponent
 ],
   imports: [
     BrowserModule,

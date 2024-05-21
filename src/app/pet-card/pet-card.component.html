@@ -1,6 +1,6 @@
 <a [routerLink]="['/pet-details', pet.id]" class="block rounded-lg border bg-card text-card-foreground shadow-sm w-full" data-v0-t="card">
   <img
-    *ngIf="pet.images" [src]="getImageUrl(pet.images[0])" [alt]="pet.images[0]"
+    *ngIf="pet.images" [src]="petService.getImageUrl(pet.images[0])" [alt]="pet.images[0]"
     class="rounded-t-lg object-cover w-full aspect-[4/3]"
     width="400"
     height="300"
