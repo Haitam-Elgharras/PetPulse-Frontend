@@ -3,6 +3,7 @@ import {HttpClient, HttpHeaders, HttpParams} from "@angular/common/http";
 import { Observable } from "rxjs";
 import { environment } from "../../environments/environment";
 import { PetManagementService } from "./pet-management.service";
+import {NgForm} from "@angular/forms";
 
 @Injectable({
   providedIn: 'root'
@@ -35,4 +36,10 @@ export class LostReportsService {
     return this.http.get<any>(`${this.baseUrl}/pets/user/${userId}?&page=0&size=30`)
   }
 
+  updateReport(report: NgForm) {
+    return this.http.put(`${this.baseUrl}/reports`, report, {observe: 'response' });
+  }
+  addReport(report: NgForm) {
+    return this.http.post(`${this.baseUrl}/reports`, report, {observe: 'response' });
+  }
 }

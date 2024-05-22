@@ -1,5 +1,5 @@
 import {Component, ViewChild} from '@angular/core';
-import { ActivatedRoute } from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 import { LostReportsService } from "../services/lost-reports.service";
 import { Report } from "../models/report.model";
 import {jwtDecode} from "jwt-decode";
@@ -9,38 +9,26 @@ import {NgForm} from "@angular/forms";
 
 
 @Component({
-  selector: 'app-manage-report',
-  templateUrl: './manage-report.component.html',
-  styleUrls: ['./manage-report.component.css']
+  selector: 'app-add-report',
+  templateUrl: './add-report.component.html',
+  styleUrls: ['./add-report.component.css']
 })
-export class ManageReportComponent {
-
-  reportId: string | undefined;
-
-  reportData!: Report;
+export class AddReportComponent {
   pets:any[] | any;
+  reportData!: Report;
   id: string | undefined
-  selectedPetId: number | undefined;
-  showSuccessMessage: boolean = false;
-  successMessage: string = '';
-  @ViewChild('reportForm') reportForm: NgForm | undefined;
+  showSuccessMessage: boolean = false; // Flag to show success message
 
+  @ViewChild('reportForm') reportForm!: NgForm; // ViewChild to access the form
 
   constructor(
-    private route: ActivatedRoute,
+    private router: Router,
     private lostReportsService: LostReportsService,
-    private petManagamentService:PetManagementService
 
   ) {
 
   }
-
   ngOnInit(): void {
-
-    this.route.params.subscribe(params => {
-      this.reportId = params['id'];
-      this.getReportById(this.reportId);
-    });
     const jwtToken = localStorage.getItem('jwt-token');
     if (jwtToken) {
       const decodedToken: any = jwtDecode(jwtToken);
@@ -49,22 +37,9 @@ export class ManageReportComponent {
       console.log(this.id)
       this.getPetsByUserId(this.id)
     }
+    this.getPetsByUserId(this.id)
 
   }
-
-  getReportById(reportId: string | undefined): void {
-    this.lostReportsService.getLostReportById(reportId).subscribe(
-      (report: Report) => {
-        this.reportData = report;
-        this.selectedPetId = this.reportData?.pet_id;
-
-      },
-      (error: any) => {
-        console.error('Error fetching lost report:', error);
-      }
-    );
-  }
-
   getPetsByUserId(userId: string | undefined): void {
     if (userId !== undefined) {
       this.lostReportsService.getPetsByUserId(userId).subscribe(
@@ -85,31 +60,28 @@ export class ManageReportComponent {
     }
   }
 
-  updateReport(report: NgForm): void {
-    report.value['id'] = this.reportId;
-    report.value['user_id'] = this.id;
-    console.log(report.value)
-     if (report) {
-       this.lostReportsService.updateReport(report.value).subscribe(
-         (response: any) => {
+  onSubmit(): void {
+    if (this.reportForm.valid) {
+      const formData = this.reportForm.value;
+      formData['user_id'] = 7; // Add user_id to the form data
+      console.log('Form Data:', formData);
 
+      this.lostReportsService.addReport(formData).subscribe(
+         (response: any) => {
            if (response.status === 201) {
              this.showSuccessMessage = true;
-             this.successMessage = 'Updates saved successfully';
-
              setTimeout(() => {
                this.showSuccessMessage = false;
-               this.successMessage = '';
-             }, 5000);
+               this.router.navigate(['/my-reports']);
+             }, 300);
            }
          },
          (error: any) => {
-           console.error('Error updating report:', error);
+           console.error('Error:', error);
          }
        );
-     } else {
-       console.error('Error: Report is undefined. Cannot update the report.');
-     }
+    } else {
+      console.error('Form is invalid');
+    }
   }
-
 }

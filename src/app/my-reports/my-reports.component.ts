@@ -51,5 +51,7 @@ export class MyReportsComponent implements OnInit {
     this.router.navigate(['/show-applications', reportId]);
   }
 
-
+  navigateToAddReport() {
+    this.router.navigate(['/add-report']);
+  }
 }

@@ -36,7 +36,7 @@
   color: white;
   text-align: center;
   padding: 10px;
-  z-index: 9999; /* Ensure the message appears on top of other elements */
+  z-index: 9999;
 }
 
 

@@ -43,6 +43,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CommonModule } from '@angular/common';
 import { LeafletModule } from '@asymmetrik/ngx-leaflet';
+import { AddReportComponent } from './add-report/add-report.component';
 
 @NgModule({
   declarations: [
@@ -65,11 +66,11 @@ import { LeafletModule } from '@asymmetrik/ngx-leaflet';
     ManageReportComponent,
     ShowApplicationsComponent,
     SimilarityComponent,
-
     NavbarComponent,
     LostReportsComponent,
     AdoptComponent,
-    CardComponent
+    CardComponent,
+    AddReportComponent
 ],
   imports: [
     BrowserModule,
