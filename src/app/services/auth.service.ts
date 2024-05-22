@@ -17,6 +17,7 @@ export class AuthService {
   constructor(private http: HttpClient, private router: Router) { }
 
   isAuthenticated : boolean = false;
+  id : any;
   username : any;
   roles : any;
   accessToken : string = '';
@@ -49,6 +50,10 @@ export class AuthService {
 
     this.username = decodedJwt.sub;
     this.roles = decodedJwt.role;
+    this.id = decodedJwt.id;
+
+    console.log('Id:', this.id);
+
 
     // set the access token in local storage
     localStorage.setItem('jwt-token', this.accessToken);

@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {PetManagementService} from "../services/pet-management.service";
 import {Router} from "@angular/router";
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-pet-form',
@@ -10,11 +11,22 @@ import {Router} from "@angular/router";
 })
 export class PetFormComponent implements OnInit{
 
-  ownerId : number = 1;
+  ownerId! : number;
   petFormGroup! : FormGroup;
   selectedFiles: File[] = [];
 
-  constructor(private petService : PetManagementService, private fb: FormBuilder, private router: Router) {
+  constructor(private petService : PetManagementService, private fb: FormBuilder, private router: Router, private authService: AuthService) {
+    
+  }
+
+  onFileChange(event: any): void {
+    if (event.target.files) {
+      this.selectedFiles = Array.from(event.target.files);
+    }
+  }
+
+  ngOnInit(): void {
+    this.ownerId = this.authService.id;
     this.petFormGroup = this.fb.group({
       ownerId: [this.ownerId],
       name: ['', Validators.required],
@@ -24,14 +36,6 @@ export class PetFormComponent implements OnInit{
       image: [null, Validators.required]
     });
   }
-
-  onFileChange(event: any): void {
-    if (event.target.files) {
-      this.selectedFiles = Array.from(event.target.files);
-    }
-  }
-
-  ngOnInit(): void {}
 
   onSubmit(): void {
     if (this.petFormGroup.valid && this.selectedFiles) {

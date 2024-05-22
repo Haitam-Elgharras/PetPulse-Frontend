@@ -29,4 +29,25 @@ export class AdoptService {
   }
 
 
+  // post adoption report
+  postAdoptionReport(data: any) {
+    
+    data = {
+      title: data.title,
+      description: data.description,
+      city: data.city,
+      address: data.address,
+      type: 'ADOPTION',
+      additionalNotes: data.notes,
+      pet_id: data.petId,
+      user_id: data.userId
+    };
+
+    console.log(data);
+
+    return this.http.post<any>(this.baseUrl + '/reports', data);
+
+  }
+
+
 }

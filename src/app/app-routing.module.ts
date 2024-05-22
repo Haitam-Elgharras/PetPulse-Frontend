@@ -19,6 +19,7 @@ import {ShowApplicationsComponent} from "./show-applications/show-applications.c
 import {SimilarityComponent} from "./similarity/similarity.component";
 import { AdoptComponent } from './adopt/adopt.component';
 import {AddReportComponent} from "./add-report/add-report.component";
+import { AdoptFormComponent } from './adopt-form/adopt-form.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -39,6 +40,7 @@ const routes: Routes = [
   { path: 'pet-details/:id', component: PetDetailsComponent, canActivate: [AuthenticationGuard] },
   { path: 'adopt', component: AdoptComponent },
   {path:'add-report',component:AddReportComponent}
+  { path: 'adopt-form', component: AdoptFormComponent, canActivate: [AuthenticationGuard]}
   ];
 
 @NgModule({

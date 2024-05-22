@@ -1,6 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { Report } from '../../models/report.model';
 import { faHeart, faComments } from '@fortawesome/free-solid-svg-icons';
+import { PetManagementService } from '../../services/pet-management.service';
 
 @Component({
   selector: 'app-card',
@@ -10,7 +11,7 @@ import { faHeart, faComments } from '@fortawesome/free-solid-svg-icons';
     `
       .card__img,
       .card__img--hover {
-        background-image: url('https://images.unsplash.com/photo-1444212477490-ca407925329e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8OXx8ZG9nc3xlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60');
+        background-image: petService.getImageUrl(Report.pet.images[0]);
       }
       .card__img,
       .card__img--hover {
@@ -20,6 +21,8 @@ import { faHeart, faComments } from '@fortawesome/free-solid-svg-icons';
 })
 export class CardComponent {
   @Input() Report!: Report;
+
+  constructor(public petService: PetManagementService) {}
 
   icons = { faHeart, faComments };
   likeColor = 'red';

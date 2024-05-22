@@ -67,4 +67,16 @@
       visibility: hidden;
     }
   }
+
+  .adoption-btn {
+    color: black;
+    outline: #198754 solid 1px;
+  }
+
+  .adoption-btn:hover {
+    color: white;
+    background-color: #198754;
+  }
+
+  /*  create an outline for the adopt button */
   

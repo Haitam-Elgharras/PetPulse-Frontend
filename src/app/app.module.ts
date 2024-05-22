@@ -44,6 +44,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CommonModule } from '@angular/common';
 import { LeafletModule } from '@asymmetrik/ngx-leaflet';
 import { AddReportComponent } from './add-report/add-report.component';
+import { AdoptFormComponent } from './adopt-form/adopt-form.component';
 
 @NgModule({
   declarations: [
@@ -71,6 +72,7 @@ import { AddReportComponent } from './add-report/add-report.component';
     AdoptComponent,
     CardComponent,
     AddReportComponent
+    AdoptFormComponent
 ],
   imports: [
     BrowserModule,
