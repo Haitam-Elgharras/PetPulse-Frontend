@@ -39,7 +39,7 @@ const routes: Routes = [
   { path: 'new-pet', component: PetFormComponent, canActivate: [AuthenticationGuard]},
   { path: 'pet-details/:id', component: PetDetailsComponent, canActivate: [AuthenticationGuard] },
   { path: 'adopt', component: AdoptComponent },
-  {path:'add-report',component:AddReportComponent}
+  {path:'add-report',component:AddReportComponent},
   { path: 'adopt-form', component: AdoptFormComponent, canActivate: [AuthenticationGuard]}
   ];
 

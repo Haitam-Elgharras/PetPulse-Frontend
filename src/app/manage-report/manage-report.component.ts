@@ -88,6 +88,8 @@ export class ManageReportComponent {
   updateReport(report: NgForm): void {
     report.value['id'] = this.reportId;
     report.value['user_id'] = this.id;
+    report.value['createdAt']=this.reportData.createdAt
+    report.value['status']=this.reportData.status
     console.log(report.value)
      if (report) {
        this.lostReportsService.updateReport(report.value).subscribe(
@@ -100,7 +102,7 @@ export class ManageReportComponent {
              setTimeout(() => {
                this.showSuccessMessage = false;
                this.successMessage = '';
-             }, 5000);
+             }, 3000);
            }
          },
          (error: any) => {

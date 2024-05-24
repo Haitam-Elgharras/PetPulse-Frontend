@@ -71,7 +71,7 @@ import { AdoptFormComponent } from './adopt-form/adopt-form.component';
     LostReportsComponent,
     AdoptComponent,
     CardComponent,
-    AddReportComponent
+    AddReportComponent,
     AdoptFormComponent
 ],
   imports: [

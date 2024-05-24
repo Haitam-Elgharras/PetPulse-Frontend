@@ -36,7 +36,10 @@ export class SimilarityComponent {
     const formData = new FormData();
     formData.append('image', this.selectedFile);
 
-    this.http.post('YOUR_API_ENDPOINT_HERE', formData, {
+    console.log('FormData content:', formData.get('image'));
+
+
+    this.http.post('http://127.0.0.1:3080/find_similar_images', formData, {
       reportProgress: true,
       observe: 'events'
     }).subscribe(

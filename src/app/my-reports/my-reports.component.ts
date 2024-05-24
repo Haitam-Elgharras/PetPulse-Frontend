@@ -10,9 +10,10 @@ import {Router} from "@angular/router";
   styleUrls: ['./my-reports.component.css']
 })
 export class MyReportsComponent implements OnInit {
-  id: number =7;
+  id: number | undefined;
   reports: any[] = [];
-
+  showSuccessMessage: boolean = false; // Flag to show success message
+  successMessage: string = ''; // Property for success message
   constructor(private authService: AuthService,private lostReportsService: LostReportsService,private router: Router) {}
 
 
@@ -53,5 +54,24 @@ export class MyReportsComponent implements OnInit {
 
   navigateToAddReport() {
     this.router.navigate(['/add-report']);
+  }
+  deleteReport(reportId: string): void {
+
+     this.lostReportsService.deleteReport(reportId).subscribe(
+       (response: any) => {
+         if (response.status === 200) {
+           console.log('Report deleted:', response);
+           this.showSuccessMessage = true;
+           this.successMessage = 'Report deleted successfully';
+           this.getMyReports();
+           setTimeout(() => {
+             this.showSuccessMessage = false;
+             this.successMessage = '';
+           }, 1500); // Delay for 3 seconds
+         }       },
+       (error: any) => {
+         console.error('Error deleting report:', error);
+       }
+     );
   }
 }

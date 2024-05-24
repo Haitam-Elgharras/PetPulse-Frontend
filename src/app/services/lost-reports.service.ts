@@ -42,4 +42,9 @@ export class LostReportsService {
   addReport(report: NgForm) {
     return this.http.post(`${this.baseUrl}/reports`, report, {observe: 'response' });
   }
+
+  deleteReport(reportId: string){
+    return this.http.delete(`${this.baseUrl}/reports/${reportId}`, {observe: 'response' });
+  }
+
 }
