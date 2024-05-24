@@ -25,42 +25,49 @@
             </span>
           </div>
         </div>
-        <div class="card__img">
+        <div class="card__img"  [style.backgroundImage]="'url(' + imageUrl + ')'">
             <img
             [src]="petService.getImageUrl(Report.pet.images[0])"
-          
           />
         </div>
-        <div class="card__img--hover">
+        <div class="card__img--hover" [style.backgroundImage]="'url(' + imageUrl + ')'">
           <img
            
           [src]="petService.getImageUrl(Report.pet.images[0])"
             class="card__img--hover"
+            [style.backgroundImage]="'url(' + imageUrl + ')'"
             alt="card hover img"
           />
         </div>
 
         <div class="card__info">
           <span>
-            <b>{{ Report.pet.name}}</b>
+            <!-- <b>{{ Report.pet.name}}</b> -->
           </span>
           <h4 className="card__title"></h4>
+          <!-- Title -->
+          <div class="font-bold text-xl mb-1">{{ Report.title }}</div>
+          <!-- Pet Details (if available) -->
+          <div *ngIf="Report.pet" class="mt-2 text-sm text-gray-600">
+            <p><strong>Name:</strong> {{ Report.pet.name }}</p>
+            <!-- Display relevant pet information -->
+            <p><strong>Breed:</strong> {{ Report.pet.breed }}</p>
+            <p><strong>Age:</strong> {{ Report.pet.age }}</p>
+            <!-- Add additional details here based on your Pet model -->
+        </div>
+
+          <!-- Description -->
+          <!-- <p class="text-gray-700 text-base">{{ Report.description }}</p> -->
+
+          <!-- Location -->
+          <div class="mt-2 text-sm text-gray-600">
+            <p><strong>Location:</strong> {{ Report.address }}, {{ Report.city }}</p>
+          </div>
           <span class="card__by">
-            Posted by
+            <strong class="mt-2 text-sm text-gray-600">Posted by:</strong>
             <a href="/" class="card__author px-2" title="author">
                 {{Report.user.firstName + " " + Report.user.lastName}}
-              <!-- {{
-                Pet.RescuerID.length > 7
-                  ? (Pet.RescuerID | slice : 0 : 7) + "..."
-                  : Pet.RescuerID
-              }} -->
             </a>
-            <span class="comments px-2">
-              &nbsp; 
-              {{ Report.description.length > 100
-                ? (Report.description | slice : 0 : 100) + "..."
-                : Report.description }}
-            </span>
           </span>
         </div>
       </article>
