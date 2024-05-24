@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../environments/environment';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -47,6 +48,20 @@ export class AdoptService {
 
     return this.http.post<any>(this.baseUrl + '/reports', data);
 
+  }
+
+
+  applyAdoption(value: any): Observable<any> {
+    
+    const adoptionApplication = {
+      userId: value.userId,
+      reportId: value.reportId,
+      reason: value.reason,
+      petExperience: value.petExperience,
+      numberOfPets: value.numberOfPets
+    };
+
+    return this.http.post<any>(this.baseUrl + '/applications/adopt', adoptionApplication);
   }
 
 

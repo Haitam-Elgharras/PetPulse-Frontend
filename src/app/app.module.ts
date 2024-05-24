@@ -45,6 +45,7 @@ import { CommonModule } from '@angular/common';
 import { LeafletModule } from '@asymmetrik/ngx-leaflet';
 import { AddReportComponent } from './add-report/add-report.component';
 import { AdoptFormComponent } from './adopt-form/adopt-form.component';
+import { ApplyAdoptionComponent } from './apply-adoption/apply-adoption.component';
 
 @NgModule({
   declarations: [
@@ -72,7 +73,8 @@ import { AdoptFormComponent } from './adopt-form/adopt-form.component';
     AdoptComponent,
     CardComponent,
     AddReportComponent,
-    AdoptFormComponent
+    AdoptFormComponent,
+    ApplyAdoptionComponent
 ],
   imports: [
     BrowserModule,
