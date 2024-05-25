@@ -1,4 +1,18 @@
-<div class="p-3">
-    <h1 class="text-2xl font-bold">Home</h1>
-    <p class="text-gray-500 dark:text-gray-400">Welcome to the Pet Adoption Foundation! We are a non-profit organization dedicated to finding loving homes for pets in need. Our mission is to provide a safe and caring environment for animals while they wait for their forever families. We have a variety of pets available for adoption, including dogs, cats, rabbits, and more. If you are interested in adopting a pet, please visit our <a href="#adoptions">Adoptions</a> page to see our available animals. If you would like to learn more about our organization or how you can help, please visit our <a href="#foundation">Foundation</a> and <a href="#help">How can I help?</a> pages. Thank you for supporting our cause!</p>
+
+<div class="container mt-5">
+<div class="row" *ngIf="true">
+    <div class="col-6">
+      <div class="image-container">
+        <button class="custom-button" style="background-color: #157347;" routerLink="/adopt">View our Cats for Adoption!</button>
+        <img id="catImage" (click)="{}" class="image-with-shadow" style="height: 400px; width: 600px;" src="https://media-be.chewy.com/wp-content/uploads/2015/08/18151603/when-can-kittens-be-adopted.jpg" alt="Kittens">
+      </div>
+    </div>
+    <div class="col-6">
+      <div class="image-container">
+        <button class="custom-button" style="background-color: #157347;" routerLink="/adopt">View our Dogs for Adoption!</button>
+        <img id="dogImage"  class="image-with-shadow" style="height: 400px; width: 600px;" src="https://images.unsplash.com/photo-1525253013412-55c1a69a5738?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Dogs">
+      </div>
+    </div>
+  </div>
+
 </div>
