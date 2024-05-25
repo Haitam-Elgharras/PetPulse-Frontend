@@ -1,6 +1,7 @@
 <div class="fixed bottom-10 right-10 z-50">
   <button
-    class="bg-blue-500 text-white font-bold py-3 px-3 rounded-full"
+    class="text-white font-bold py-3 px-3 rounded-full"
+    style="background-color: #28865b;"
     (click)="openModal()"
   >
     <img src="assets/chatbot.png" alt="{{ 'CHATBOT.OPEN_MODAL' | translate }}" class="h-8 w-8" />
@@ -66,8 +67,9 @@
         <!-- Show loading spinner when loading is true -->
         <button
           *ngIf="!loading; else loadingSpinner"
-          class="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground hover:bg-primary/90 h-10 px-4 py-2"
+          class="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 text-primary-foreground h-10 px-4 py-2"
           (click)="onSubmit()"
+          style="background-color: #28865b;"
         >
           {{ 'CHATBOT.SEND' | translate }}
         </button>
