@@ -5,6 +5,7 @@ export const content = [
   "!./src/app/adopt/**/*",
   "!./src/app/components/**/*",
   "!./src/app/components/card/**/*",
+  "!./src/app/home/**/*",
 ];
 export const theme = {
   extend: {},
