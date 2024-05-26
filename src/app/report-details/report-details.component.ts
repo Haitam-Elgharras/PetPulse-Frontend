@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import { LostReportsService } from "../services/lost-reports.service";
 import { Report } from "../models/report.model";
 import { Pet } from "../models/pet.model";
@@ -15,6 +15,7 @@ export class ReportDetailsComponent implements OnInit {
   reportId: string | undefined; // Define a property to store the report ID
   reportData: Report | undefined;
   petData: Pet | undefined;
+  successMessage: string  |null| undefined;
 
   private s3BaseUrl = 'https://petpulse.s3.amazonaws.com/';
 
@@ -25,10 +26,19 @@ export class ReportDetailsComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    this.route.queryParams.subscribe(params => {
+      this.successMessage = params['success'] || null;
+    });
+
     this.route.params.subscribe(params => {
       this.reportId = params['id'];
       this.getReportById(this.reportId);
     });
+    if (this.successMessage) {
+      setTimeout(() => {
+        this.successMessage = null; // Hide the success message after 5 seconds
+      }, 1000); // 5 seconds delay
+    }
   }
 
   getImageUrl(image: string | undefined): string {
@@ -76,4 +86,6 @@ export class ReportDetailsComponent implements OnInit {
       }
     );
   }
+
+  protected readonly Router = Router;
 }

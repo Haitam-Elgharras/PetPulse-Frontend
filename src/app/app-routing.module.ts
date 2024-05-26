@@ -21,6 +21,7 @@ import { AdoptComponent } from './adopt/adopt.component';
 import {AddReportComponent} from "./add-report/add-report.component";
 import { AdoptFormComponent } from './adopt-form/adopt-form.component';
 import { ApplyAdoptionComponent } from './apply-adoption/apply-adoption.component';
+import {ApplyFindingComponent} from "./apply-finding/apply-finding.component";
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -42,6 +43,7 @@ const routes: Routes = [
   { path: 'adopt', component: AdoptComponent },
   {path:'add-report',component:AddReportComponent},
   { path: 'adopt-form', component: AdoptFormComponent, canActivate: [AuthenticationGuard]},
+  { path: 'apply-finding/:id', component: ApplyFindingComponent},
   { path: 'apply-for-adoption/:id', component: ApplyAdoptionComponent, canActivate: [AuthenticationGuard] }
   ];
 
