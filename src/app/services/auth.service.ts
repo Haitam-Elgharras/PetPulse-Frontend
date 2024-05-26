@@ -13,7 +13,7 @@ interface AuthResponse {
   providedIn: 'root'
 })
 export class AuthService {
-  
+
   constructor(private http: HttpClient, private router: Router) { }
 
   isAuthenticated : boolean = false;
@@ -61,8 +61,12 @@ export class AuthService {
     let jwt = localStorage.getItem('jwt-token');
     if (jwt){
       this.loadProfile({ 'token': jwt });
-      this.router.navigateByUrl('/home');
+      //this.router.navigateByUrl('/home');
     }
+  }
+
+  getToken(): string | null {
+    return localStorage.getItem('jwt-token');
   }
 
   logout() {
@@ -75,5 +79,5 @@ export class AuthService {
   }
 
 
-  
+
 }

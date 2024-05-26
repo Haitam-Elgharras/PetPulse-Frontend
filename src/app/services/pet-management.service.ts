@@ -1,24 +1,34 @@
 import { Injectable } from '@angular/core';
-import {HttpClient} from "@angular/common/http";
+import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {environment} from "../../environments/environment";
 import {Pet} from "../models/pet.model";
+import {AuthService} from "./auth.service";
 
 @Injectable({
   providedIn: 'root'
 })
 export class PetManagementService {
 
-  constructor(private http : HttpClient) { }
-
   baseUrl = environment.baseUrl;
 
+  constructor(private http : HttpClient, private authService : AuthService) {
+  }
+
   public getPetsByUserId(userId: number, name : string, page: number, size: number): Observable<any> {
-    return this.http.get<any>(`${this.baseUrl}/pets/user/${userId}?name=${name}&page=${page}&size=${size}`);
+    return this.http.get<any>(`${this.baseUrl}/pets/user/${userId}?name=${name}&page=${page}&size=${size}`, );
   }
 
   public createPet(petData: FormData): Observable<any> {
-    return this.http.post<any>(`${this.baseUrl}/pets/save`, petData);
+    const token = this.authService.getToken();
+
+    // Create HTTP headers with Authorization token
+    let headers = new HttpHeaders();
+    if (token) {
+      headers = headers.set('Authorization', `Bearer ${token}`);
+    }
+    console.log(headers);
+    return this.http.post<any>(`${this.baseUrl}/pets/save`, petData, {headers});
   }
 
   public getPetById(petId: number): Observable<Pet> {

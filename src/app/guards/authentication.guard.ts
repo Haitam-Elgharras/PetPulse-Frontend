@@ -7,15 +7,15 @@ import { AuthService } from '../services/auth.service';
   providedIn: 'root'
 })
 export class AuthenticationGuard {
- 
+
   constructor(private authService: AuthService, private router: Router) { }
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): MaybeAsync<GuardResult> {
 
     route: ActivatedRouteSnapshot;
     state: RouterStateSnapshot;
-    
-    if(this.authService.isAuthenticated){ 
+
+    if(this.authService.isAuthenticated){
       return true;
     }
     else{
