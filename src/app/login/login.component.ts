@@ -18,6 +18,9 @@ export class LoginComponent {
     
 
   ngOnInit(): void {
+    if (this.authService.isAuthenticated) {
+      this.router.navigateByUrl('/home');
+    }
     this.loginForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
       password: ['', Validators.required]

@@ -11,6 +11,7 @@ import {AuthService} from "./auth.service";
 export class PetManagementService {
 
   baseUrl = environment.baseUrl;
+    s3BaseUrl: string = environment.s3BaseUrl;
 
   constructor(private http : HttpClient, private authService : AuthService) {
   }
@@ -41,6 +42,10 @@ export class PetManagementService {
 
   public updatePet(petData: FormData, petId : number): Observable<any> {
     return this.http.put<any>(`${this.baseUrl}/pets/${petId}`, petData);
+  }
+
+  public getImageUrl(image: string): string {
+    return `${this.s3BaseUrl}${image}`;
   }
 
 }

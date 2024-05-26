@@ -17,6 +17,7 @@ export class AuthService {
   constructor(private http: HttpClient, private router: Router) { }
 
   isAuthenticated : boolean = false;
+  id : any;
   username : any;
   roles : any;
   accessToken : string = '';
@@ -38,7 +39,6 @@ export class AuthService {
       lastName: value.lastName
     }
 
-    console.log(user);
     return this.http.post<any>(this.baseUrl + '/auth/register', user);
   }
 
@@ -48,10 +48,12 @@ export class AuthService {
 
     let decodedJwt:any = jwtDecode(this.accessToken);
 
-    console.log(decodedJwt);
-
     this.username = decodedJwt.sub;
     this.roles = decodedJwt.role;
+    this.id = decodedJwt.id;
+
+    console.log('Id:', this.id);
+
 
     // set the access token in local storage
     localStorage.setItem('jwt-token', this.accessToken);
@@ -61,12 +63,8 @@ export class AuthService {
     let jwt = localStorage.getItem('jwt-token');
     if (jwt){
       this.loadProfile({ 'token': jwt });
-      //this.router.navigateByUrl('/home');
+      // this.router.navigateByUrl('/home');
     }
-  }
-
-  getToken(): string | null {
-    return localStorage.getItem('jwt-token');
   }
 
   logout() {

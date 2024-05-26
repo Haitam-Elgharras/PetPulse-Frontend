@@ -13,6 +13,32 @@
   text-align: left;
 }
 
+
+.cursor-pointer {
+    cursor: pointer;
+}
+html,
+body {
+  margin: 0%;
+  padding: 0%;
+  font-family: "Cormorant", serif;
+  color: black;
+  height: 100%;
+}
+
+a {
+  color: #0d0d0d;
+  text-decoration: none;
+}
+
+.btn {
+  border-radius: 30px;
+  color: white;
+}
+
+
+
+
 /* @import "../node_modules/bootstrap/dist/css/bootstrap.css";
 @import "../node_modules/bootstrap-icons/font/bootstrap-icons.css";
 
@@ -303,3 +329,6 @@ body {
         padding: 3rem 3rem 3rem 2rem;
     }
 } */
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

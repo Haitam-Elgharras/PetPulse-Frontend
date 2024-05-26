@@ -3,6 +3,7 @@ import {Pet} from "../models/pet.model";
 import {ActivatedRoute, Router} from "@angular/router";
 import {PetManagementService} from "../services/pet-management.service";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-pet-details',
@@ -12,19 +13,21 @@ import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 export class PetDetailsComponent implements OnInit{
   pet!: Pet;
   petFormGroup! : FormGroup;
-  ownerId : number = 1;
+  ownerId! : number;
   private s3BaseUrl = 'https://petpulse.s3.amazonaws.com/';
 
-  constructor(private route: ActivatedRoute, private fb : FormBuilder, private petService: PetManagementService, private router: Router) {
+  constructor(private route: ActivatedRoute, private fb : FormBuilder, private petService: PetManagementService, private router: Router, private authService: AuthService) {
+    
+  }
+
+  ngOnInit(): void {
+    this.ownerId = this.authService.id;
     this.petFormGroup = this.fb.group({
       ownerId: ['', Validators.required],
       name: ['', Validators.required],
       breed: ['', Validators.required],
       age: ['', [Validators.required, Validators.min(0)]]
     });
-  }
-
-  ngOnInit(): void {
     const petId = this.route.snapshot.paramMap.get('id');
     if (petId) {
       this.petService.getPetById(Number(petId)).subscribe(pet => {
