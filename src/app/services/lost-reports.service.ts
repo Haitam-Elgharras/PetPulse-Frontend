@@ -4,7 +4,22 @@ import { Observable } from "rxjs";
 import { environment } from "../../environments/environment";
 import { PetManagementService } from "./pet-management.service";
 import {NgForm} from "@angular/forms";
+import {map} from "rxjs/operators";
 
+
+export interface PaginatedResponse {
+  content: Report[];
+  pageable: any;
+  totalPages: number;
+  totalElements: number;
+  last: boolean;
+  size: number;
+  number: number;
+  sort: any;
+  numberOfElements: number;
+  first: boolean;
+  empty: boolean;
+}
 @Injectable({
   providedIn: 'root'
 })
@@ -18,7 +33,10 @@ export class LostReportsService {
 
   getLostReports(): Observable<any[]> {
 
-    return this.http.get<any[]>(`${this.baseUrl}/reports`);
+    return this.http.get<PaginatedResponse>(`${this.baseUrl}/reportsFiltred?type=LOST`)
+      .pipe(
+      map(response => response.content)
+    );
   }
 
   getLostReportById(reportId: string | undefined): Observable<any>{

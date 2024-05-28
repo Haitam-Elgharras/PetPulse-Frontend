@@ -1,14 +1,14 @@
 <div class="upload-container">
-  <mat-card>
-    <mat-card-title>Upload Image</mat-card-title>
+  <mat-card style="width: 50%">
+    <mat-card-title style="padding:10px 0 5px 20px" >Upload Image</mat-card-title>
     <mat-card-content>
       <div class="file-input-container">
         <input type="file" (change)="onFileSelected($event)" accept="image/*" hidden #fileInput>
-        <button mat-raised-button color="primary" (click)="fileInput.click()">Choose Image</button>
+        <button mat-raised-button style="background-color: #28865b;color: white" (click)="fileInput.click()">Choose Image</button>
       </div>
       <div *ngIf="selectedFile" class="image-preview-container">
         <img [src]="imagePreview" alt="Image Preview" class="image-preview">
-        <button mat-raised-button color="accent" (click)="onUpload()">Upload</button>
+        <button mat-raised-button  (click)="onUpload()" style="margin-top: 10px;border: 2px  #28865b solid">Upload</button>
       </div>
     </mat-card-content>
   </mat-card>

@@ -1,4 +1,8 @@
 .container{
   width: 80%;
 }
-
+.title{
+  font-size: 1.2em;
+  margin: 10px 5px;
+  font-weight: bold;
+}

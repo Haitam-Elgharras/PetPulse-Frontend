@@ -4,8 +4,12 @@
 }
 .sta1,.sta2{
   margin: 0 20px;
+  min-width: 120px;
+  background-color: #28865b;
   padding: 5px 10px;
-  background-color: #cfd6e7;
+  border-radius: 5px;
+  color: white;
+  margin-bottom: 10px;
 }
 .specs{
   margin-top: 20px;

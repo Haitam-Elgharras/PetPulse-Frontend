@@ -2,12 +2,14 @@
   <div *ngIf="showSuccessMessage" class="alert alert-success">
     {{ successMessage }}
   </div>
-  <h1 class="text-2xl font-bold mb-4">Reports List  </h1>
+  <div style="display:flex;justify-content: space-between;padding-right: 30px"  >
+   <h1 class="text-2xl font-bold mb-4">Reports List</h1>
+    <button  style="margin-bottom: 20px;background-color: #28865b" class="new-report-button" (click)="navigateToAddReport()">New Report</button>
+  </div>
 
-  <button class="new-report-button" (click)="navigateToAddReport()">New Report</button>
 
-  <table class="min-w-full bg-white shadow-md rounded-lg overflow-hidden">
-    <thead class="bg-gray-800 text-white">
+  <table class="min-w-full bg-white shadow-md rounded-lg overflow-hidden " >
+    <thead class="text-black" style="text-align: center">
     <tr>
       <th class="py-2 px-4">Title</th>
       <th class="py-2 px-4">Type</th>
@@ -18,7 +20,7 @@
     </tr>
     </thead>
     <tbody>
-    <tr *ngFor="let report of reports" class="hover:bg-gray-100">
+    <tr  *ngFor="let report of reports" class="hover:bg-gray-100">
       <td class="py-3 px-4">{{ report.title }}</td>
       <td class="py-3 px-4" [ngClass]="{
   'text-purple-600': report.type === 'ADOPTION',

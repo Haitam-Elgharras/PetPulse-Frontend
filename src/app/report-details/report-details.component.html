@@ -9,16 +9,14 @@
     <!-- Left column for pet image -->
     <div class="w-300 p-4">
       <!-- Main image -->
-      <img class="w-300 h-auto" [src]="getImageUrl(petData.images[0])" alt="Pet Image" style="border-radius: 10px;">
+      <img style="border: 1px black solid" class="w-300 h-300" [src]="getImageUrl(petData.images[0])" alt="Pet Image" style="border-radius: 10px;">
       <p class="text-x"><strong>Reported By:</strong> {{reportData.reporterName}}</p>
 
       <!-- Loop over additional images and show them smaller -->
       <div class="flex mt-4">
         <img *ngFor="let image of petData.images.slice(1); let i = index" class="w-20 h-auto mr-2 border border-gray-300" [src]="getImageUrl(image)" alt="Pet Image" (click)="setMainImage(image)">
       </div>
-      <!-- Button below the main image -->
-      <!-- app.component.html -->
-      <p class="mt-4">Find This Pet? <button class="bg-green-500 hover:bg-green-900 text-white font-bold py-2 px-4 rounded" [routerLink]="'/apply-finding/' + this.reportData?.id">Submit Application</button></p>
+      <p class="mt-4" ><span style="font-weight: bold;margin-right: 5px">Did Youn Find This Pet?</span> <button class="hover:bg-green-900 text-white font-bold py-2 px-4 rounded" [routerLink]="'/apply-finding/' + this.reportData?.id" style="background-color: #28865b">Submit Application</button></p>
     </div>
   </div>
   <div class="w-1/2 p-4" >
@@ -26,11 +24,11 @@
     <div class="sta">
       <div class="sta1">
         Report Status
-        <p>{{ reportData.status }}</p>
+        <p style="padding: 0;margin: 0">{{ reportData.status }}</p>
       </div>
       <div class="sta2">
-        Lost Date
-        <p>{{ reportData.createdAt }}</p>
+        Reporting Date
+        <p style="padding: 0;margin: 0">{{ reportData.createdAt }}</p>
       </div>
     </div>
     <p class="font-bold">About This Pet :</p>

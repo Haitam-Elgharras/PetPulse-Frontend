@@ -1,22 +1,22 @@
 <div class="container mx-auto">
-  <p>Location</p>
+  <p class="title" style="color: #28865b">Location</p>
 
   <div  style="display:flex">
     <input type="text" [(ngModel)]="searchTerm" (input)="onSearch()" placeholder="Search reports..." class="px-4 py-2 mb-4 border rounded-md" style="
 flex: 80%">
-    <button class="w-30 px-4 py-2 mb-4 border rounded-md" style="flex: 20%" routerLink="/similarity" > Search by photo</button>
+    <button class="w-30 px-4 py-2 mb-4 border rounded-md ml-3" style="flex: 15%;background-color: #28865b;color:white" routerLink="/similarity" > Search by photo</button>
   </div>
 
-  <div class="flex flex-wrap justify-center -mx-1 md:-mx-2">
+  <div class="flex flex-wrap justify-center -mx-1 md:-mx-2" >
     <!-- Loop through each report -->
     <div *ngFor="let report of reports" class="w-full md:w-1/2 lg:w-1/3 px-1 md:px-2 my-4">
       <a [routerLink]="['/lost-reports/', report.id]" class="block w-full">
-      <div class="max-w-xs rounded overflow-hidden shadow-lg h-full">
+      <div class="max-w-xs rounded overflow-hidden shadow-lg " style="min-height: 400px;max-height: 500px">
         <!-- Pet Image -->
-        <img class="w-full h-48 object-fit-fill" [src]="getImageUrl(report.petData.images[0])" alt="Pet Image">
+        <img class="w-full h-48 object-fit-lg-fill" [src]="getImageUrl(report.petData.images[0])" alt="Pet Image">
 
         <div class="px-6 py-4">
-            <p class="text-xs text-gray-500 pb-2"><strong>Reported By:</strong> {{report.reporterName}}</p>
+            <p class="text-xs text-gray-500 pb-2" ><strong style="color: #28865b">Reported By:</strong> {{report.reporterName}}</p>
 
           <!-- Title -->
           <div class="font-bold text-xl mb-1 ">{{ report.title }}</div>
