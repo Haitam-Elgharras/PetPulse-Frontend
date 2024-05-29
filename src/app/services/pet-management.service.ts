@@ -31,6 +31,7 @@ export class PetManagementService {
   }
 
   public updatePet(petData: FormData, petId : number): Observable<any> {
+    console.log(petData);
     return this.http.put<any>(`${this.baseUrl}/pets/${petId}`, petData);
   }
 

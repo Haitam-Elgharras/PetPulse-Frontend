@@ -47,6 +47,7 @@ import { AddReportComponent } from './add-report/add-report.component';
 import { AdoptFormComponent } from './adopt-form/adopt-form.component';
 import { ApplyAdoptionComponent } from './apply-adoption/apply-adoption.component';
 import { ApplyFindingComponent } from './apply-finding/apply-finding.component';
+import { MyApplicationsComponent } from './my-applications/my-applications.component';
 
 @NgModule({
   declarations: [
@@ -76,7 +77,8 @@ import { ApplyFindingComponent } from './apply-finding/apply-finding.component';
     AddReportComponent,
     AdoptFormComponent,
     ApplyAdoptionComponent,
-    ApplyFindingComponent
+    ApplyFindingComponent,
+    MyApplicationsComponent
 ],
   imports: [
     BrowserModule,

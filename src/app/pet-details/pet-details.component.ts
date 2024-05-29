@@ -26,7 +26,7 @@ export class PetDetailsComponent implements OnInit{
       ownerId: ['', Validators.required],
       name: ['', Validators.required],
       breed: ['', Validators.required],
-      age: ['', [Validators.required, Validators.min(0)]]
+      age: ['', [Validators.required, Validators.min(0)]],
     });
     const petId = this.route.snapshot.paramMap.get('id');
     if (petId) {
@@ -60,7 +60,7 @@ export class PetDetailsComponent implements OnInit{
       const formData = new FormData();
       formData.append('name', this.petFormGroup.get('name')!.value);
       formData.append('breed', this.petFormGroup.get('breed')!.value);
-      formData.append('specie', 'DOG');
+      formData.append('specie', this.pet.specie);
       formData.append('age', this.petFormGroup.get('age')!.value);
       formData.append('ownerId', this.petFormGroup.get('ownerId')!.value);
 

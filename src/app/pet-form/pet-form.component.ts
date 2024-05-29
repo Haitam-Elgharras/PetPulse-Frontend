@@ -49,6 +49,9 @@ export class PetFormComponent implements OnInit{
         formData.append('image', file);
       });
 
+      // check pet specie
+      console.log('Pet specie:', this.petFormGroup.get('specie')!.value);
+
       this.petService.createPet(formData).subscribe(response => {
         console.log('Pet created successfully:', response);
         this.router.navigate(['/pets']);

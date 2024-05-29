@@ -22,6 +22,7 @@ import {AddReportComponent} from "./add-report/add-report.component";
 import { AdoptFormComponent } from './adopt-form/adopt-form.component';
 import { ApplyAdoptionComponent } from './apply-adoption/apply-adoption.component';
 import {ApplyFindingComponent} from "./apply-finding/apply-finding.component";
+import { MyApplicationsComponent } from './my-applications/my-applications.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -35,6 +36,7 @@ const routes: Routes = [
   { path: 'pet-details/:id', component: PetDetailsComponent },
   {path:'lost-reports',component:LostReportsComponent},
   {path:'my-reports',component:MyReportsComponent},
+  {path:'my-applications',component:MyApplicationsComponent},
   {path:'my-reports/:id',component:ManageReportComponent},
   {path:'show-applications/:id',component:ShowApplicationsComponent},
   {path:'similarity',component:SimilarityComponent},

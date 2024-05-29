@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { AuthService } from '../services/auth.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { AdoptService } from '../services/adopt.service';
 
 @Component({
@@ -19,7 +19,7 @@ export class ApplyAdoptionComponent {
   applyFrom: FormGroup | undefined;
 
   // Constructor
-  constructor(private fb: FormBuilder, private authService: AuthService, private route: ActivatedRoute, private adoptService: AdoptService) {
+  constructor(private fb: FormBuilder, private authService: AuthService, private route: ActivatedRoute, private adoptService: AdoptService, private router: Router) {
   }
 
   ngOnInit() {
@@ -37,12 +37,6 @@ export class ApplyAdoptionComponent {
 
   onSubmit(): void
   {
-    if(!this.applyFrom?.valid) {
-    {  
-      console.log('Invalid form');
-    }
-
-    console.log(this.applyFrom?.value);
     this.userId = this.authService.id;
 
     console.log("test");
@@ -50,19 +44,21 @@ export class ApplyAdoptionComponent {
     const id = this.route.snapshot.paramMap.get('id');
     this.reportId = id ? +id : undefined;
 
-    this.applyFrom = this.fb.group({
+    
+    this.applyFrom?.patchValue({
       userId: this.userId,
       reportId: this.reportId,
-      reason: this.reason,
-      petExperience: this.petExperience,
-      numberOfPets: this.numberOfPets,
     });
 
-    console.log(this.applyFrom.value);
+    console.log(this.applyFrom?.value);
+    
 
-    this.adoptService.applyAdoption(this.applyFrom.value).subscribe({
+    this.adoptService.applyAdoption(this.applyFrom?.value).subscribe({
       next: (response: any) => {
+        // navigate to my-reports
         console.log('Application submitted successfully:', response);
+        this.router.navigate(['/my-applications']);
+
       },
       error: (error: any) => {
         console.error('Error submitting application:', error);
@@ -71,5 +67,4 @@ export class ApplyAdoptionComponent {
     
   }
 
-  }
 }

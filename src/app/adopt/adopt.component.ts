@@ -95,6 +95,7 @@ export class AdoptComponent implements OnInit {
       this.adoptService.getAdoptionReports(this.page, this.size, this.city,this.breed,this.specie,this.petAgeStart,this.petAgeEnd).subscribe(
         {
           next: (response) => {
+            console.log(response);
             this.adoptionPosts = response.content.map((report: any) => ({
               ...report,
               pet: {

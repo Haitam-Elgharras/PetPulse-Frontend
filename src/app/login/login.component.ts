@@ -10,9 +10,9 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class LoginComponent {
 
-  error = '';
   jwtToken = '';
   loginForm: FormGroup | undefined;
+  errorMessage = '';
 
   constructor(private fb: FormBuilder, private authService: AuthService, private router: Router) {}
     
@@ -23,11 +23,14 @@ export class LoginComponent {
     }
     this.loginForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
-      password: ['', Validators.required]
+      password: ['', [Validators.minLength(6), Validators.required]]
     });
   }
 
   handleLogin() {
+    if (this.loginForm?.invalid) {
+      return;
+    }
     this.authService.login(this.loginForm?.value)
       .subscribe({
         next: (data) => {
@@ -39,7 +42,7 @@ export class LoginComponent {
           console.log(data);
         },
         error: error => {
-          this.error = error;
+          this.errorMessage = error.error.message;
           console.log(error);
         }
       });
